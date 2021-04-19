@@ -215,10 +215,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2071551286}
-  - component: {fileID: 2071551285}
   - component: {fileID: 2071551284}
   - component: {fileID: 2071551288}
   - component: {fileID: 2071551287}
+  - component: {fileID: 2071551285}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -287,7 +287,7 @@ Animator:
   m_GameObject: {fileID: 2071551283}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33155169d0e6fe54da3413c8c15807bd, type: 2}
+  m_Controller: {fileID: 9100000, guid: f57be412d7a05f8408f3ffdab4f7a94a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda2d1435b3fc6d46943d80f98d88519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
 --- !u!61 &2071551288
 BoxCollider2D:
   m_ObjectHideFlags: 0
