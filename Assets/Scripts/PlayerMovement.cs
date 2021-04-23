@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public Rigidbody2D rb;
 
     private Vector2 direction;
 
@@ -25,40 +26,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        transform.Translate(direction * (speed * Time.deltaTime));
-        SetAnimator(direction);
+        rb.MovePosition(rb.position + direction * (speed * Time.fixedDeltaTime));
+        if (direction.x != 0 || direction.y != 0)
+            SetAnimator(direction);
+        
+        else
+            _animator.SetFloat("speed", 0);
     }
 
     private void TakeInput()
     {
-        direction = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            direction += Vector2.up;
-        }
-        
-        if (Input.GetKey(KeyCode.A))
-        {
-            direction += Vector2.left;
-        }
-        
-        if (Input.GetKey(KeyCode.S))
-        {
-            direction += Vector2.down;
-        }
-        
-        if (Input.GetKey(KeyCode.D))
-        {
-            direction += Vector2.right;
-        }
+        direction.x = (Input.GetAxisRaw("Horizontal"));
+        direction.y = (Input.GetAxisRaw("Vertical"));
     }
 
     private void SetAnimator(Vector2 direction)
     {
+        
         _animator.SetFloat("xDir", direction.x);
         _animator.SetFloat("yDir", direction.y);
-        print(_animator.GetFloat("xDir"));
+        _animator.SetFloat("speed", direction.sqrMagnitude);
     }
     
 }
