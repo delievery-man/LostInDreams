@@ -619,6 +619,7 @@ MonoBehaviour:
   walls: {fileID: 231472791}
   tile1: {fileID: 11400000, guid: 92df79576315b13408215050bc9ae071, type: 2}
   tile2: {fileID: 11400000, guid: 282d487bfdbb62244b3280930554b520, type: 2}
+  weight: 32
 --- !u!1 &1488292061
 GameObject:
   m_ObjectHideFlags: 0

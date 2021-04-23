@@ -25,13 +25,14 @@ public class MapFunctions: MonoBehaviour
 	public GameObject walls;
 	public TileBase tile1;
 	public TileBase tile2;
+	public int weight; 
 
 	void Start()
 	{
 		_tilemap = GetComponent<Tilemap>();
 		wallsMap = walls.GetComponent<Tilemap>();
 		var map = GenerateArray(20, 20, false);
-		RenderMap(map, _tilemap, wallsMap, tile1, tile2);
+		RenderMap(map, _tilemap, wallsMap, tile1, tile2, weight);
 	}
 	public static int[,] GenerateArray(int width, int height, bool empty)
     {
@@ -59,7 +60,7 @@ public class MapFunctions: MonoBehaviour
     /// <param name="map">Map that we want to draw</param>
     /// <param name="tilemap">Tilemap we will draw onto</param>
     /// <param name="tile">Tile we will draw with</param>
-    public static void RenderMap(int[,] map, Tilemap tilemap1, Tilemap tilemap2, TileBase tile1,  TileBase tile2)
+    public static void RenderMap(int[,] map, Tilemap tilemap1, Tilemap tilemap2, TileBase tile1,  TileBase tile2, int weight)
     {
         tilemap1.ClearAllTiles(); //Clear the map (ensures we dont overlap)
         for (int x = 0; x < map.GetUpperBound(0) ; x++) //Loop through the width of the map
@@ -68,7 +69,7 @@ public class MapFunctions: MonoBehaviour
             {
                 if (map[x, y] == 1) // 1 = tile, 0 = no tile
                 {
-	                if (rnd.Next(2)%2 ==0)
+	                if (rnd.Next(100) >= weight)
 	                {
 		                tilemap1.SetTile(new Vector3Int(x - 10 , y - 10 , 0), tile1);
 	                }
