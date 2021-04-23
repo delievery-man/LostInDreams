@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
 
     private Animator _animator;
+    private Tilemap _tilemap;
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _tilemap = GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("xDir", direction.x);
         _animator.SetFloat("yDir", direction.y);
         _animator.SetFloat("speed", direction.sqrMagnitude);
+        
     }
-    
-}
+
+    }
