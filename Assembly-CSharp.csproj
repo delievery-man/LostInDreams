@@ -53,7 +53,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\MapFunctions.cs" />
+     <Compile Include="Assets\Scripts\Global Scripts\MapFunctions.cs" />
+     <Compile Include="Assets\Scripts\Global Scripts\LevelGenerator.cs" />
+     <Compile Include="Assets\Scripts\Global Scripts\MapSettings.cs" />
      <None Include="Assets\Sprites\RF_Catacombs_v1.0\public-license.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
