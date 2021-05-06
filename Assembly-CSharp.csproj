@@ -53,8 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Global Scripts\MapFunctions.cs" />
-     <Compile Include="Assets\Scripts\Global Scripts\LevelGenerator.cs" />
+     <Compile Include="Assets\Scripts\RandomGenerationAlgs.cs" />
+     <Compile Include="Assets\Scripts\RandomWalkGenerator.cs" />
+     <Compile Include="Assets\Scripts\KeySpawner.cs" />
+     <Compile Include="Assets\Scripts\WallGenerator.cs" />
+     <Compile Include="Assets\Scripts\TileMapVisualizer.cs" />
      <Compile Include="Assets\Scripts\Global Scripts\MapSettings.cs" />
      <None Include="Assets\Sprites\RF_Catacombs_v1.0\public-license.txt" />
  <Reference Include="UnityEngine">
