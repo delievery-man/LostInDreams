@@ -16,22 +16,23 @@ public class RandomWalkGenerator : MonoBehaviour
     [SerializeField]
     protected Vector2Int startPos = Vector2Int.zero;
     [SerializeField]
-    public MapSettings _mapSettings;
+    protected internal MapSettings _mapSettings;
+    [SerializeField]
+    protected Transform Player;
 
-    public Transform Player;
-
-    public bool startRandomEachIteraion = true;
+    protected bool startRandomEachIteraion = true;
     
     [FormerlySerializedAs("_visualizer")] [SerializeField]
     public TileMapVisualizer visualizer;
 
-    private Vector2Int keyPos;
-    private Vector2Int playerPos;
+    public Vector2Int keyPos;
+    public Vector2Int playerPos;
 
-    private void Start()
-    {
-        RunProceduralGeneration();
-    }
+    // private void Start()
+    // {
+    //     Clear();
+    //     RunProceduralGeneration();
+    // }
 
     public void RunProceduralGeneration()
     {
@@ -47,10 +48,13 @@ public class RandomWalkGenerator : MonoBehaviour
             case Algorithm.RandomWalk:
                 RunRandomWalk(floorPositions, startPos);
                 break;
+
+                
         }
         Clear();
         visualizer.PaintFloor(floorPositions);
         visualizer.PaintKey(keyPos);
+        visualizer.SpawnPlayer(Player, playerPos);
        
         WallGenerator.CreateWalls(floorPositions, visualizer);
     }
@@ -79,7 +83,7 @@ public class RandomWalkGenerator : MonoBehaviour
         return roomPositions;
     }
 
-    private void CreateCorridor(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> potentialRooms)
+    protected void CreateCorridor(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> potentialRooms)
     {
         var currentPos = startPos;
         potentialRooms.Add(currentPos);
@@ -95,6 +99,13 @@ public class RandomWalkGenerator : MonoBehaviour
     public void Clear()
     {
         visualizer.Clear();
+        foreach (var obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            DestroyImmediate(obj);
+        }
+        
+        
+       
     }
     
 
@@ -133,7 +144,6 @@ public class LevelGeneratorEditor : Editor
 
             if (GUILayout.Button("Generate"))
             {
-                levelGen.Clear();
                 levelGen.RunProceduralGeneration();
             }
 

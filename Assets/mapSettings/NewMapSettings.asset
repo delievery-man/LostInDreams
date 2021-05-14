@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72922ab41e7dd4348a6bed1e9720b1d1, type: 3}
   m_Name: NewMapSettings
   m_EditorClassIdentifier: 
-  algorithm: 1
+  algorithm: 2
   walkLen: 100
-  iterations: 20
-  corridorCount: 4
+  iterations: 26
+  corridorCount: 2
   corridorLen: 42
   roomPercent: 2
+  minRoomWidth: 20
+  minRoomHeight: 15
+  dungeonWidth: 100
+  dungeonHeight: 100
+  offset: 1

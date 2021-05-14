@@ -10,7 +10,8 @@ using UnityEditor;
 public enum Algorithm
 {
      RandomWalk,
-     Corridors
+     Corridors,
+     BSP
 }
 
 [System.Serializable]
@@ -23,6 +24,11 @@ public class MapSettings : ScriptableObject
     public int corridorCount;
     public int corridorLen;
     public int roomPercent;
+    public int minRoomWidth;
+    public int minRoomHeight;
+    public int dungeonWidth;
+    public int dungeonHeight;
+    public int offset;
     private static System.Random rnd = new System.Random();
 
 }
@@ -51,7 +57,13 @@ public class MapSettings_Editor : Editor
 	            mapLayer.iterations = EditorGUILayout.IntSlider("Iterations",mapLayer.iterations, 1, 100);
 	            mapLayer.walkLen = EditorGUILayout.IntSlider("Room build length",mapLayer.walkLen, 1, 100);
 	            mapLayer.roomPercent = EditorGUILayout.IntSlider("Room Percent",mapLayer.roomPercent, 1, 100);
-
+	            break;
+            case Algorithm.BSP:
+	            mapLayer.dungeonHeight = EditorGUILayout.IntSlider("Height of map", mapLayer.dungeonHeight, 1, 100);
+	            mapLayer.dungeonWidth = EditorGUILayout.IntSlider("Width of map", mapLayer.dungeonWidth, 1, 100);
+	            mapLayer.minRoomWidth = EditorGUILayout.IntSlider("Minimal room width", mapLayer.minRoomWidth, 1, 100);
+	            mapLayer.minRoomHeight = EditorGUILayout.IntSlider("Minimal room height", mapLayer.minRoomHeight, 1, 100);
+	            mapLayer.offset = EditorGUILayout.IntSlider("offset", mapLayer.offset, 1, 10);
 	            break;
             
         }
