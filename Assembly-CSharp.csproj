@@ -59,13 +59,16 @@
      <Compile Include="Assets\Scripts\RandomWalkGenerator.cs" />
      <Compile Include="Assets\Scripts\KeySpawner.cs" />
      <Compile Include="Assets\FollowPlayerSmoothing.cs" />
+     <Compile Include="Assets\Scripts\spawnEnemies.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyFollowing.cs" />
      <Compile Include="Assets\Scripts\enemyMove.cs" />
      <Compile Include="Assets\Scripts\WallGenerator.cs" />
      <Compile Include="Assets\Scripts\TileMapVisualizer.cs" />
      <Compile Include="Assets\Scripts\bulletMovement.cs" />
      <Compile Include="Assets\Scripts\BSPGennerator.cs" />
      <Compile Include="Assets\Scripts\Global Scripts\MapSettings.cs" />
+     <Compile Include="Assets\udate.cs" />
      <None Include="Assets\Sprites\RF_Catacombs_v1.0\public-license.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -753,6 +756,14 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{93f8180c-d988-ee06-4592-a821dbaf4021}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{ecb0b427-0ef7-fb3a-9853-8a3ffb27b8d3}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -59,7 +59,7 @@ public class RandomWalkGenerator : MonoBehaviour
         WallGenerator.CreateWalls(floorPositions, visualizer);
     }
 
-    private HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRooms, HashSet<Vector2Int> floorPositions)
+    public HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRooms, HashSet<Vector2Int> floorPositions)
     {
         var roomPositions = new HashSet<Vector2Int>();
         var roomToCreateCounter = Mathf.RoundToInt(potentialRooms.Count * _mapSettings.roomPercent);
@@ -68,7 +68,6 @@ public class RandomWalkGenerator : MonoBehaviour
             .OrderBy(x => Guid.NewGuid())
             .Take(roomToCreateCounter)
             .ToList();
-        var spawnRoom = roomToCreate[Random.Range(0, roomToCreate.Count)];
         playerPos = roomToCreate.First();
         visualizer.SpawnPlayer(Player, playerPos);
         foreach (var roomPos in roomToCreate)
