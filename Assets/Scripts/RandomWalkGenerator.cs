@@ -51,12 +51,12 @@ public class RandomWalkGenerator : MonoBehaviour
 
                 
         }
-        Clear();
-        visualizer.PaintFloor(floorPositions);
-        visualizer.PaintKey(keyPos);
-        visualizer.SpawnPlayer(Player, playerPos);
-       
-        WallGenerator.CreateWalls(floorPositions, visualizer);
+        // Clear();
+        // visualizer.PaintFloor(floorPositions);
+        // visualizer.PaintKey(keyPos);
+        // visualizer.SpawnPlayer(Player, playerPos);
+        //
+        // WallGenerator.CreateWalls(floorPositions, visualizer);
     }
 
     public HashSet<Vector2Int> CreateRooms(HashSet<Vector2Int> potentialRooms, HashSet<Vector2Int> floorPositions)

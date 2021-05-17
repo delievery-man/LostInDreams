@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - TileMap
   - Wall
+  - Generator
   layers:
   - Default
   - TransparentFX

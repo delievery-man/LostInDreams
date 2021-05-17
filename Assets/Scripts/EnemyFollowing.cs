@@ -18,8 +18,8 @@ public class EnemyFollowing : MonoBehaviour
     private float powerForce = 5f;
     private NavMeshAgent agent;
     public Transform target;
-    
-    
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();

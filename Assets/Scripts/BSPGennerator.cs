@@ -15,6 +15,8 @@ public class BSPGennerator : RandomWalkGenerator
     private Vector2Int farest;
     public Transform Enemy;
     private List<Vector2Int> roomCenters = new List<Vector2Int>();
+    private List<BoundsInt> roomList;
+    public int counter;
 
     private void Awake()
     {
@@ -27,13 +29,30 @@ public class BSPGennerator : RandomWalkGenerator
         Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
 
     }
+
+    private void FixedUpdate()
+    {
+
+        var pos = roomList
+            .Select(x => x.center)
+            .FirstOrDefault(y => Vector3.Distance(Player.transform.position, y) <= 5 &&  Vector3.Distance(Player.transform.position, y)>2);
+
+        if (counter < 5 && pos != Vector3.zero )
+        {
+            Instantiate(Enemy, pos, Quaternion.identity );
+            counter++;
+
+        }
+
+    }
+
     public void CreateRooms()
     {
-        var roomsList = RandomGenerationAlgs.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(_mapSettings.dungeonWidth, _mapSettings.dungeonHeight, 0)), _mapSettings.minRoomWidth, _mapSettings.minRoomHeight);
+        roomList = RandomGenerationAlgs.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(_mapSettings.dungeonWidth, _mapSettings.dungeonHeight, 0)), _mapSettings.minRoomWidth, _mapSettings.minRoomHeight);
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-        floor = CreateSimpleRooms(roomsList);
-        foreach (var room in roomsList)
+        floor = CreateSimpleRooms(roomList);
+        foreach (var room in roomList)
         {
                roomCenters.Add((Vector2Int) Vector3Int.RoundToInt(room.center)); 
         }
@@ -44,10 +63,6 @@ public class BSPGennerator : RandomWalkGenerator
         visualizer.PaintFloor(floor);
         visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
-        for (var i = 0; i < roomsList.Count; i++)
-        {
-            Instantiate(Enemy, roomsList[i].center, Quaternion.identity);
-        }
         WallGenerator.CreateWalls(floor, visualizer);
         
     }
@@ -144,6 +159,7 @@ public class BSPGennerator : RandomWalkGenerator
         }
 
         return closest;
+        
     }
 
     private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
@@ -166,7 +182,7 @@ public class BSPGennerator : RandomWalkGenerator
             
         return floor;
     }
-    
+
 
 }
 

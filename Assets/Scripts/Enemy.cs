@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private UnityEngine.Object explosion;
     public float vision;
-    
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject explosionRef = (GameObject)Instantiate(explosion);
             explosionRef.transform.position = transform.position;
+            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().counter--;
             Destroy(gameObject);
         };
     }
