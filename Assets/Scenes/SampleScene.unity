@@ -9390,7 +9390,9 @@ MonoBehaviour:
   wallTileMap: {fileID: 811487412}
   itemsTileMap: {fileID: 679768385}
   floorTile: {fileID: 11400000, guid: 5d026d4d4dc69cc4999f97a60da48f48, type: 2}
-  wallTile: {fileID: 11400000, guid: 6ab17ce7977340340bc0b550c263ad6c, type: 2}
+  wallTile: {fileID: 11400000, guid: 405476de904cb53499f6a7e64e137fbb, type: 2}
+  wallTile1: {fileID: 11400000, guid: b2df7de325298e3428de5a60b37b4412, type: 2}
+  wallTile2: {fileID: 11400000, guid: a57dd6a159dfad748a7c5ea059059d6c, type: 2}
   key: {fileID: 11400000, guid: 1161e0cf04074684681f7435271ad93d, type: 2}
 --- !u!4 &1015140653
 Transform:
@@ -57129,7 +57131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3909964877619735199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 

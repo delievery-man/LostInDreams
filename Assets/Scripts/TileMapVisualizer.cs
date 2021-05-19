@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
+using Random = System.Random;
 
 public class TileMapVisualizer : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class TileMapVisualizer : MonoBehaviour
     private Tilemap itemsTileMap;
 
     [SerializeField]
-    private TileBase floorTile, wallTile, key;
+    private TileBase floorTile, wallTile, wallTile1, wallTile2, key;
 
     public void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
     {
@@ -26,9 +28,9 @@ public class TileMapVisualizer : MonoBehaviour
         }
     }
 
-    public void PaintFloor(IEnumerable<Vector2Int> fllorPositions)
+    public void PaintFloor(IEnumerable<Vector2Int> floorPositions)
     {
-        PaintTiles(fllorPositions, floorTilemap, floorTile);
+        PaintTiles(floorPositions, floorTilemap, floorTile);
     }
 
     public void PaintOneTile(Tilemap tilemap, TileBase tile, Vector2Int pos)
@@ -46,7 +48,9 @@ public class TileMapVisualizer : MonoBehaviour
 
     public void PaintOneWall(Vector2Int wall)
     {
-        PaintOneTile(wallTileMap, wallTile, wall);
+        var wallTiles = new[] {wallTile, wallTile1, wallTile2};
+        var tile = wallTiles[new Random().Next(wallTiles.Length)];
+        PaintOneTile(wallTileMap, tile, wall);
     }
     
     public void PaintKey(Vector2Int keyPos)
