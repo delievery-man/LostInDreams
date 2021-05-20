@@ -59,8 +59,8 @@ public class MapSettings_Editor : Editor
 	            mapLayer.roomPercent = EditorGUILayout.IntSlider("Room Percent",mapLayer.roomPercent, 1, 100);
 	            break;
             case Algorithm.BSP:
-	            mapLayer.dungeonHeight = EditorGUILayout.IntSlider("Height of map", mapLayer.dungeonHeight, 1, 100);
-	            mapLayer.dungeonWidth = EditorGUILayout.IntSlider("Width of map", mapLayer.dungeonWidth, 1, 100);
+	            mapLayer.dungeonHeight = EditorGUILayout.IntSlider("Height of map", mapLayer.dungeonHeight, 1, 200);
+	            mapLayer.dungeonWidth = EditorGUILayout.IntSlider("Width of map", mapLayer.dungeonWidth, 1, 200);
 	            mapLayer.minRoomWidth = EditorGUILayout.IntSlider("Minimal room width", mapLayer.minRoomWidth, 1, 100);
 	            mapLayer.minRoomHeight = EditorGUILayout.IntSlider("Minimal room height", mapLayer.minRoomHeight, 1, 100);
 	            mapLayer.offset = EditorGUILayout.IntSlider("offset", mapLayer.offset, 1, 10);

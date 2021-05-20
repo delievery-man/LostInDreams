@@ -52,7 +52,7 @@ public class BSPGennerator : RandomWalkGenerator
             .Select(x => x.center)
             .FirstOrDefault(y =>
             {
-                var min = Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 4;
+                var min = Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 2;
                 
                 return Vector3.Distance(Player.transform.position, y) <=
                        min;
@@ -70,7 +70,7 @@ public class BSPGennerator : RandomWalkGenerator
                 foreach (var random2d in Direction.directionsDiag)
                 {
 
-                    var enemyPos = pos + new Vector3(random2d.x, random2d.y, 0f)*Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 4;
+                    var enemyPos = pos + new Vector3(random2d.x, random2d.y, 0f)*4;
 
                     Instantiate(Enemy,enemyPos , Quaternion.identity );
                     currRoom = pos;

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +13,8 @@ public class Enemy : MonoBehaviour
     private UnityEngine.Object explosion;
     public float vision;
     public Vector3 spawnRoom;
-   
+    public float damage = 2;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -47,5 +50,15 @@ public class Enemy : MonoBehaviour
         {
             health = maxHealth;
         };
+    }
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<DealDamage>().PlayerDealDamage(damage);
+            print( other.gameObject.GetComponent<DealDamage>().health);
+
+        }
     }
 }
