@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private UnityEngine.Object explosion;
     public float vision;
+    public Vector3 spawnRoom;
    
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
         explosion = Resources.Load("Explosion");
+        spawnRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().currRoom;
     }
 
 
@@ -32,8 +34,10 @@ public class Enemy : MonoBehaviour
         {
             GameObject explosionRef = (GameObject)Instantiate(explosion);
             explosionRef.transform.position = transform.position;
-            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().counter--;
+            var currRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().currRoom;
+            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().enemyCounters[spawnRoom][0]--;
             Destroy(gameObject);
+            Destroy(explosionRef, 3);
         };
     }
     

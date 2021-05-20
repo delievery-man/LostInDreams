@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using Random = UnityEngine.Random;
 
 public class BSPGennerator : RandomWalkGenerator
@@ -17,6 +18,11 @@ public class BSPGennerator : RandomWalkGenerator
     private List<Vector2Int> roomCenters = new List<Vector2Int>();
     private List<BoundsInt> roomList;
     public int counter;
+    private BoundsInt firstRoom;
+    public Vector3 currRoom;
+    private int TotalEnemyCount = 8;
+    public Dictionary<Vector3, List<int>>enemyCounters = new Dictionary<Vector3, List<int>>();
+    private bool FirstWaveKilled = false;
 
     private void Awake()
     {
@@ -27,21 +33,53 @@ public class BSPGennerator : RandomWalkGenerator
     void Start()
     {
         Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
-
+        foreach (var center in roomList
+            .Select(x => x.center)
+            .ToList())
+        {
+            enemyCounters[new Vector3(0f, 0f, 0f)] = new List<int>(2){0, 0};
+            if (!enemyCounters.ContainsKey(center))
+            {
+                enemyCounters[center] =new List<int>(2){0, 0};
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-
         var pos = roomList
+            .Where(x=> x!= firstRoom)
             .Select(x => x.center)
-            .FirstOrDefault(y => Vector3.Distance(Player.transform.position, y) <= 5 &&  Vector3.Distance(Player.transform.position, y)>2);
-
-        if (counter < 5 && pos != Vector3.zero )
+            .FirstOrDefault(y =>
+            {
+                var min = Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 4;
+                
+                return Vector3.Distance(Player.transform.position, y) <=
+                       min;
+            });
+        if (pos != Vector3.zero)
         {
-            Instantiate(Enemy, pos, Quaternion.identity );
-            counter++;
+            currRoom = pos;
+        }
+        
+        if (pos != Vector3.zero && enemyCounters[pos][0] ==0  && new Vector3(playerPos.x, playerPos.y, 0f)!=pos)
+        {
+            
+            if (enemyCounters[pos][1]<=3)
+            {
+                foreach (var random2d in Direction.directionsDiag)
+                {
 
+                    var enemyPos = pos + new Vector3(random2d.x, random2d.y, 0f)*Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 4;
+
+                    Instantiate(Enemy,enemyPos , Quaternion.identity );
+                    currRoom = pos;
+                    enemyCounters[pos][0]++;
+                }
+                enemyCounters[pos][1]++;
+            }
+
+            
         }
 
     }
@@ -49,9 +87,8 @@ public class BSPGennerator : RandomWalkGenerator
     public void CreateRooms()
     {
         roomList = RandomGenerationAlgs.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(_mapSettings.dungeonWidth, _mapSettings.dungeonHeight, 0)), _mapSettings.minRoomWidth, _mapSettings.minRoomHeight);
-
-        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-        floor = CreateSimpleRooms(roomList);
+        firstRoom = roomList.First();
+        var floor = CreateSimpleRooms(roomList);
         foreach (var room in roomList)
         {
                roomCenters.Add((Vector2Int) Vector3Int.RoundToInt(room.center)); 
