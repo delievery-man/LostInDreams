@@ -18,8 +18,8 @@ MonoBehaviour:
   corridorCount: 9
   corridorLen: 2
   roomPercent: 12
-  minRoomWidth: 20
-  minRoomHeight: 20
-  dungeonWidth: 200
-  dungeonHeight: 200
-  offset: 5
+  minRoomWidth: 30
+  minRoomHeight: 30
+  dungeonWidth: 100
+  dungeonHeight: 100
+  offset: 7

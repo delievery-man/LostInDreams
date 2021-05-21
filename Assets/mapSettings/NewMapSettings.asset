@@ -20,6 +20,6 @@ MonoBehaviour:
   roomPercent: 2
   minRoomWidth: 20
   minRoomHeight: 15
-  dungeonWidth: 100
-  dungeonHeight: 100
+  dungeonWidth: 47
+  dungeonHeight: 46
   offset: 1

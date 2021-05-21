@@ -26,13 +26,14 @@ public class BSPGennerator : RandomWalkGenerator
 
     private void Awake()
     {
+        Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
         Clear(); 
         CreateRooms();
     }
 
     void Start()
     {
-        Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
+        
         foreach (var center in roomList
             .Select(x => x.center)
             .ToList())
@@ -100,6 +101,9 @@ public class BSPGennerator : RandomWalkGenerator
         visualizer.PaintFloor(floor);
         visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
+
+        // visualizer.SpawnKey(Key, keyPos);
+        // visualizer.SpawnExit(Exit, exitPos);
         WallGenerator.CreateWalls(floor, visualizer);
         
     }
@@ -213,13 +217,14 @@ public class BSPGennerator : RandomWalkGenerator
                 }
             }
         }
-        
-        playerPos = (Vector2Int) Vector3Int.RoundToInt(roomsList.First().center);
+
+        var center = roomsList.First().center;
+        playerPos = (Vector2Int) Vector3Int.RoundToInt(center);
         keyPos = KeySpawner.GetKeyPlace(playerPos, roomsList.Select(x => (Vector2Int) Vector3Int.RoundToInt(x.center)).ToList());
-            
+        exitPos =  (Vector2Int)Vector3Int.RoundToInt(new Vector3(center.x - 3, center.y));   
         return floor;
     }
-
+    
 
 }
 
