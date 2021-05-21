@@ -99,11 +99,11 @@ public class BSPGennerator : RandomWalkGenerator
         floor.UnionWith(corridors);
 
         visualizer.PaintFloor(floor);
-        visualizer.PaintKey(keyPos);
+        // visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
 
-        // visualizer.SpawnKey(Key, keyPos);
-        // visualizer.SpawnExit(Exit, exitPos);
+        visualizer.SpawnKey(Key, keyPos);
+        visualizer.SpawnExit(Exit, exitPos);
         WallGenerator.CreateWalls(floor, visualizer);
         
     }

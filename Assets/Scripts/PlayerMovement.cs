@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator _animator;
     private Tilemap _tilemap;
+    public Transform keyFollowPoint;
+    public bool isPicked;
+    public bool isFinished;
 
     // public Transform keyFollowPoint;
     // public bool isPicked;
