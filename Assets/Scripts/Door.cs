@@ -7,13 +7,9 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     private PlayerMovement player;
-
-
     public Animator animator;
 
-    private bool isFinished;
-
-    public bool doorOpen, waitiongToOpen;
+    public bool doorOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,16 +31,9 @@ public class Door : MonoBehaviour
         
         if (other.gameObject.CompareTag("Player"))
         {
-            if (player.followingKey != null)
+            if (player.isPicked)
             {
-                
-                player.followingKey.followTarget = transform;
-      
-                waitiongToOpen = true;
-
-                
                 StartCoroutine(waiter());
-                
             }
         }
     }

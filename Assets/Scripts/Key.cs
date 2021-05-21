@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
 
     public float followSpeed;
     public Transform followTarget;
+    public GameObject key;
     
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,10 @@ public class Key : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFollowing)
-        {
-            transform.position = Vector3.Lerp(transform.position, followTarget.position, followSpeed * Time.deltaTime);
-        }
+        // if (isFollowing)
+        // {
+        //     transform.position = Vector3.Lerp(transform.position, followTarget.position, followSpeed * Time.deltaTime);
+        // }
         
      
     }
@@ -34,9 +35,11 @@ public class Key : MonoBehaviour
             if (!isFollowing)
             {
                 PlayerMovement player = FindObjectOfType<PlayerMovement>();
-                followTarget = player.keyFollowPoint;
+                // followTarget = player.keyFollowPoint;
                 isFollowing = true;
-                player.followingKey = this;
+                player.isPicked = true;
+                key.SetActive(false);
+                Destroy(this);
             }
         }
     }

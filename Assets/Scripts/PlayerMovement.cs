@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Tilemap _tilemap;
 
     public Transform keyFollowPoint;
-    public Key followingKey;
+    public bool isPicked;
     public bool isFinished;
 
     // Start is called before the first frame update
