@@ -98,9 +98,12 @@ public class BSPGennerator : RandomWalkGenerator
         floor.UnionWith(corridors);
 
         visualizer.PaintFloor(floor);
-        visualizer.PaintKey(keyPos);
+        // visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
+        
         WallGenerator.CreateWalls(floor, visualizer);
+        visualizer.SpawnKey(Key, keyPos);
+        visualizer.SpawnExit(Exit, exitPos);
         
     }
 
@@ -213,13 +216,14 @@ public class BSPGennerator : RandomWalkGenerator
                 }
             }
         }
-        
-        playerPos = (Vector2Int) Vector3Int.RoundToInt(roomsList.First().center);
+
+        var center = roomsList.First().center;
+        playerPos = (Vector2Int) Vector3Int.RoundToInt(center);
         keyPos = KeySpawner.GetKeyPlace(playerPos, roomsList.Select(x => (Vector2Int) Vector3Int.RoundToInt(x.center)).ToList());
-            
+        exitPos =  (Vector2Int)Vector3Int.RoundToInt(new Vector3(center.x - 3, center.y));   
         return floor;
     }
-
+    
 
 }
 

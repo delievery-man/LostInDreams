@@ -18,15 +18,16 @@ public class RandomWalkGenerator : MonoBehaviour
     [SerializeField]
     protected internal MapSettings _mapSettings;
     [SerializeField]
-    protected Transform Player;
+    protected Transform Player, Key, Exit;
 
     protected bool startRandomEachIteraion = true;
     
     [FormerlySerializedAs("_visualizer")] [SerializeField]
     public TileMapVisualizer visualizer;
 
-    public Vector2Int keyPos;
+    public static Vector2Int keyPos { get; set; }
     public Vector2Int playerPos;
+    public static Vector2Int exitPos { get; set; }
 
     // private void Start()
     // {

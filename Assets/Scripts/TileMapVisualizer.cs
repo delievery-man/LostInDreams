@@ -33,7 +33,7 @@ public class TileMapVisualizer : MonoBehaviour
         PaintTiles(floorPositions, floorTilemap, floorTile);
     }
 
-    public void PaintOneTile(Tilemap tilemap, TileBase tile, Vector2Int pos)
+    public static void PaintOneTile(Tilemap tilemap, TileBase tile, Vector2Int pos)
     {
         var tilePosition = tilemap.WorldToCell((Vector3Int)pos);
         tilemap.SetTile(tilePosition, tile);
@@ -63,5 +63,17 @@ public class TileMapVisualizer : MonoBehaviour
     {
         var tilePosition = itemsTileMap.WorldToCell((Vector3Int)spawnPoint);
         player.position = floorTilemap.CellToWorld(tilePosition);
+    }
+
+    public void SpawnKey(Transform key, Vector2Int spawnPoint)
+    {
+        var tilePosition = itemsTileMap.WorldToCell((Vector3Int) spawnPoint);
+        key.position = floorTilemap.CellToWorld(tilePosition);
+    }
+
+    public void SpawnExit(Transform exit, Vector2Int spawnPoint)
+    {
+        var tilePosition = itemsTileMap.WorldToCell((Vector3Int) spawnPoint);
+        exit.position = floorTilemap.CellToWorld(tilePosition);
     }
 }

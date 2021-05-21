@@ -9,6 +9,8 @@ TagManager:
   - TileMap
   - Wall
   - Generator
+  - Key
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - player
   - Water
   - UI
-  - 
+  - Key
   - 
   - 
   - 

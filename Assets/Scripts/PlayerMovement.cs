@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator _animator;
     private Tilemap _tilemap;
+
+    public Transform keyFollowPoint;
+    public Key followingKey;
+    public bool isFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +57,4 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("speed", direction.sqrMagnitude);
         
     }
-
-    }
+}
