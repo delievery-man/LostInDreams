@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class DealDamage : MonoBehaviour
+{
+    public float health;
+    // Start is called before the first frame update
+    
+    public int numOfHearts;
+    public List<Image> hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    private void FixedUpdate()
+    {
+        if (health>numOfHearts)
+        {
+            health = numOfHearts;
+        }
+
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            if (i<Mathf.RoundToInt(health))
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+        }
+    }
+    public void PlayerDealDamage(float damage)
+    {
+        health -= damage;
+        CheckDeath();
+    }
+
+    private void CheckDeath()
+    {
+        if (health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        };
+    }
+}
