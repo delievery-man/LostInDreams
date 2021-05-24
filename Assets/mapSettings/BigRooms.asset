@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: BigRooms
   m_EditorClassIdentifier: 
   algorithm: 2
-  walkLen: 100
-  iterations: 12
-  corridorCount: 9
-  corridorLen: 2
-  roomPercent: 12
-  minRoomWidth: 30
-  minRoomHeight: 30
+  walkLen: 76
+  iterations: 47
+  corridorCount: 24
+  corridorLen: 75
+  roomPercent: 66
+  minRoomWidth: 18
+  minRoomHeight: 18
   dungeonWidth: 100
   dungeonHeight: 100
-  offset: 7
+  offset: 3

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float vision;
     public Vector3 spawnRoom;
     public float damage = 2;
-    
+    public List<Transform> Loot;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,12 @@ public class Enemy : MonoBehaviour
 
     public void DealDamage(float damage)
     {
-        health -= damage;
-        CheckDeath();
+        if (health>0)
+        {
+            health -= damage;
+            CheckDeath();
+        }
+
     }
 
     private void CheckDeath()
@@ -39,8 +44,14 @@ public class Enemy : MonoBehaviour
             explosionRef.transform.position = transform.position;
             var currRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().currRoom;
             GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().enemyCounters[spawnRoom][0]--;
+            Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().enemyCounters[spawnRoom][0]);
             Destroy(gameObject);
             Destroy(explosionRef, 3);
+            var deathPoint = gameObject.GetComponent<Transform>().position;
+            if (Random.Range(1, 7) == 1)
+            {
+                Instantiate(Loot[Random.Range(0, Loot.Count)], deathPoint, Quaternion.identity);
+            }
         };
     }
     
@@ -57,7 +68,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<DealDamage>().PlayerDealDamage(damage);
-            print( other.gameObject.GetComponent<DealDamage>().health);
+
 
         }
     }

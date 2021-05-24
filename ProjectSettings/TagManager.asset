@@ -11,6 +11,10 @@ TagManager:
   - Generator
   - Key
   - Exit
+  - Bullet
+  - Salve
+  - ShotGun
+  - BulletEnemy
   layers:
   - Default
   - TransparentFX

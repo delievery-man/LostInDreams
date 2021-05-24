@@ -6,35 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    private PlayerMovement player;
     public Animator animator;
 
     public bool doorOpen;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (isFinished)
-        // {
-        //      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        // }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Key"))
         {
-            if (player.isPicked)
-            {
-                StartCoroutine(waiter());
-            }
+            StartCoroutine(waiter());
         }
     }
     

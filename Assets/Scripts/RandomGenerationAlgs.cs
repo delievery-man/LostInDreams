@@ -116,10 +116,10 @@ public static class Direction
         Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
     };
 
-    public static List<Vector2Int> directionsDiag = new List<Vector2Int>()
+    public static List<Vector2> directionsDiag = new List<Vector2>()
     {
-        Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right, Vector2Int.down + Vector2Int.left,
-        Vector2Int.right + Vector2Int.down, Vector2Int.up + Vector2Int.right, Vector2Int.up + Vector2Int.left
+        Vector2.up, Vector2.down, Vector2.left, Vector2.right, (Vector2.down + Vector2.left).normalized,
+        (Vector2.right + Vector2.down).normalized, (Vector2.up + Vector2.right).normalized, (Vector2.up + Vector2.left).normalized
     };
 
     public static Vector2Int GetRandomDirection()
@@ -127,7 +127,7 @@ public static class Direction
         return directions[Random.Range(0, directions.Count)];
     }
     
-    public static Vector2Int GetRandomDiagDirection()
+    public static Vector2 GetRandomDiagDirection()
     {
         return directionsDiag[Random.Range(0, directionsDiag.Count)];
     }

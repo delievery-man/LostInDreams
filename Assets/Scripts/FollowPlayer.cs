@@ -10,7 +10,7 @@ public class FollowPlayer : MonoBehaviour
     public float smoothing;
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Player != null)
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72922ab41e7dd4348a6bed1e9720b1d1, type: 3}
   m_Name: NewMapSettings
   m_EditorClassIdentifier: 
-  algorithm: 2
+  algorithm: 0
   walkLen: 100
   iterations: 26
   corridorCount: 2

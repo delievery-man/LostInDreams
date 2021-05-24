@@ -23,17 +23,16 @@ public class BSPGennerator : RandomWalkGenerator
     private int TotalEnemyCount = 8;
     public Dictionary<Vector3, List<int>>enemyCounters = new Dictionary<Vector3, List<int>>();
     private bool FirstWaveKilled = false;
-
+    public GameObject Trap;
     private void Awake()
     {
-        Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
         Clear(); 
         CreateRooms();
     }
 
     void Start()
     {
-        
+        Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
         foreach (var center in roomList
             .Select(x => x.center)
             .ToList())
@@ -48,36 +47,58 @@ public class BSPGennerator : RandomWalkGenerator
 
     private void FixedUpdate()
     {
-        var pos = roomList
+        var spawnRoom = roomList
             .Where(x=> x!= firstRoom)
-            .Select(x => x.center)
             .FirstOrDefault(y =>
             {
                 var min = Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 2;
                 
-                return Vector3.Distance(Player.transform.position, y) <=
+                return Vector3.Distance(Player.transform.position, y.center) <=
                        min;
             });
-        if (pos != Vector3.zero)
+      
+        var spawnCenter = spawnRoom.center;
+        if (spawnCenter != Vector3.zero)
         {
-            currRoom = pos;
+            currRoom = spawnCenter;
         }
         
-        if (pos != Vector3.zero && enemyCounters[pos][0] ==0  && new Vector3(playerPos.x, playerPos.y, 0f)!=pos)
+        if (spawnCenter != Vector3.zero && enemyCounters[spawnCenter][0] == 0  && new Vector3(playerPos.x, playerPos.y, 0f)!=spawnCenter)
         {
             
-            if (enemyCounters[pos][1]<=3)
+            
+            if (enemyCounters[spawnCenter][1]<3)
             {
+                if (enemyCounters[spawnCenter][1] == 0)
+                {
+                    
+                   
+                    foreach (var dir in Direction.directions)
+                    {
+
+                        var trapPos = spawnCenter +
+                                      new Vector3(dir.x, dir.y,
+                                          0f) * (Mathf.Min(spawnRoom.size.x / 2.5f, spawnRoom.size.y / 2.5f) - _mapSettings.offset);
+                        if (Vector2.Distance(trapPos, Player.position) <=
+                            Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 2)
+                            continue;
+                        
+                        Instantiate(Trap,trapPos , Quaternion.identity );
+                    }
+                    
+                }
+                
+                
                 foreach (var random2d in Direction.directionsDiag)
                 {
 
-                    var enemyPos = pos + new Vector3(random2d.x, random2d.y, 0f)*4;
-
+                    var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/2.5f, spawnRoom.size.y/2.5f)-_mapSettings.offset);
                     Instantiate(Enemy,enemyPos , Quaternion.identity );
-                    currRoom = pos;
-                    enemyCounters[pos][0]++;
+
+                    enemyCounters[spawnCenter][0]++;
+                    currRoom = spawnCenter;
                 }
-                enemyCounters[pos][1]++;
+                enemyCounters[spawnCenter][1]++;
             }
 
             
@@ -95,22 +116,25 @@ public class BSPGennerator : RandomWalkGenerator
                roomCenters.Add((Vector2Int) Vector3Int.RoundToInt(room.center)); 
         }
         
-        var corridors = ConnectRooms(roomCenters);
+        var corridors = ConnectRooms(floor, roomCenters);
+        
         floor.UnionWith(corridors);
 
         visualizer.PaintFloor(floor);
+        
         // visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
-
+        
         visualizer.SpawnKey(Key, keyPos);
         visualizer.SpawnExit(Exit, exitPos);
+        
         WallGenerator.CreateWalls(floor, visualizer);
         
     }
 
 
 
-    private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
+    private HashSet<Vector2Int> ConnectRooms(HashSet<Vector2Int> floor, List<Vector2Int> roomCenters)
     {
         var corridors = new HashSet<Vector2Int>();
         var currentCenter = roomCenters[Random.Range(0, roomCenters.Count)];
@@ -121,19 +145,18 @@ public class BSPGennerator : RandomWalkGenerator
             var closest = FindClosestRoom(currentCenter, roomCenters);
             roomCenters.Remove(closest);
             var newCorridor = new HashSet<Vector2Int>();
-            for (int i = 0; i < 2; i++)
-            {
-                newCorridor = CreateConnection(currentCenter +Vector2Int.left*i, closest+Vector2Int.left*i);
-                currentCenter = closest;
-                corridors.UnionWith(newCorridor);
-            }
-           
+            newCorridor = CreateConnection(currentCenter , closest, floor);
+            currentCenter = closest;
+            corridors.UnionWith(newCorridor);
+            var corridorCenter = newCorridor.ToList()[newCorridor.Count/2-1];
+
+
         }
 
         return corridors;
     }
 
-    private HashSet<Vector2Int> CreateConnection(Vector2Int currentCenter, Vector2Int closest)
+    private HashSet<Vector2Int> CreateConnection(Vector2Int currentCenter, Vector2Int closest, HashSet<Vector2Int> floor)
     {
         var corridor = new HashSet<Vector2Int>();
         var position = currentCenter;
@@ -152,11 +175,11 @@ public class BSPGennerator : RandomWalkGenerator
                 position += Vector2Int.down;
             }
             pos2Up = position + Vector2Int.left;
-            corridor.Add(pos2Up);
+            if(!floor.Contains(pos2Up))corridor.Add(pos2Up);
             pos2Up = position + Vector2Int.right;
-            corridor.Add(pos2Up);
+            if(!floor.Contains(pos2Up))corridor.Add(pos2Up);
 
-            corridor.Add(position);
+            if(!floor.Contains(position))corridor.Add(position);
             
 
         }
@@ -171,13 +194,12 @@ public class BSPGennerator : RandomWalkGenerator
                 {
                     position += Vector2Int.left;
                 }
+
                 pos2Down = position + Vector2Int.up;
-                corridor.Add(pos2Down);
+                if(!floor.Contains(pos2Down))corridor.Add(pos2Down);
                 pos2Down = position + Vector2Int.down;
-                corridor.Add(pos2Down);
-
-
-                corridor.Add(position);
+                if(!floor.Contains(pos2Down))corridor.Add(pos2Down);
+                if(!floor.Contains(position))corridor.Add(position);
                 
         }
         

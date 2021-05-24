@@ -15,7 +15,7 @@ public enum Algorithm
 }
 
 [System.Serializable]
-[CreateAssetMenu(fileName ="NewMapSettings", menuName = "Map Settings", order = 0)]
+[CreateAssetMenu(fileName ="NewMapSettings", menuName = "Maps Settings", order = 0)]
 public class MapSettings : ScriptableObject
 {
     public Algorithm algorithm;
@@ -29,7 +29,7 @@ public class MapSettings : ScriptableObject
     public int dungeonWidth;
     public int dungeonHeight;
     public int offset;
-    private static System.Random rnd = new System.Random();
+
 
 }
 
