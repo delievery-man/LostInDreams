@@ -15,6 +15,7 @@ TagManager:
   - Salve
   - ShotGun
   - BulletEnemy
+  - Shield
   layers:
   - Default
   - TransparentFX

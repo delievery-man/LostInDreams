@@ -11,7 +11,7 @@ public class EnemyBulletMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if ( other.tag !="Bullet" && other.tag != "Key" && other.tag != "Salve"  && other.tag != "Exit" && other.tag != "Enemy")
+        if ( other.tag != "Key" && other.tag != "Salve"  && other.tag != "Exit" && other.tag != "Enemy")
             {
                 if (other.GetComponent<DealDamage>() != null)
                 {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PickUp : MonoBehaviour
 {
@@ -43,9 +44,31 @@ public class PickUp : MonoBehaviour
                     Shooting.WeaponTypes.ShotGun;
                 inventory.isTaken[i] = false;
             }
+            if (item.gameObject.CompareTag("Shield"))
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<DealDamage>().isInvulnerable = true;
+                inventory.isTaken[i] = false;
+                ShieldTimer(item);
+
+                
+            }
 
             Destroy(item);
             break;
         }
     }
+
+    private void ShieldTimer(GameObject item)
+    {
+        Destroy(item);
+        var duration = 5f;
+        while (duration>0)
+        {
+            duration -= Time.deltaTime;
+        }
+
+
+    }
+
+   
 }

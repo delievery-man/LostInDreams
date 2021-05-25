@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ public class DealDamage : MonoBehaviour
     public List<Image> hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public bool isInvulnerable = false;
+    public Shield shieldTimer;
+    
 
     private void FixedUpdate()
     {
@@ -36,8 +40,12 @@ public class DealDamage : MonoBehaviour
     }
     public void PlayerDealDamage(float damage)
     {
-        health -= damage;
-        CheckDeath();
+        if (!shieldTimer.GetComponent<Shield>().isCd && health>0)
+        {
+            health -= damage;
+            CheckDeath();
+        }
+        
     }
 
     private void CheckDeath()

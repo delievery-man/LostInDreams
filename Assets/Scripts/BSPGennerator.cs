@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using Random = UnityEngine.Random;
@@ -12,7 +14,11 @@ public class BSPGennerator : RandomWalkGenerator
     [SerializeField]
     private bool randomWalkRooms = false;
 
-
+    public int minRoomWidth;
+    public int minRoomHeight;
+    public int dungeonWidth;
+    public int dungeonHeight;
+    public int offset;
     private Vector2Int farest;
     public Transform Enemy;
     private List<Vector2Int> roomCenters = new List<Vector2Int>();
@@ -51,7 +57,7 @@ public class BSPGennerator : RandomWalkGenerator
             .Where(x=> x!= firstRoom)
             .FirstOrDefault(y =>
             {
-                var min = Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 2;
+                var min = Math.Min(minRoomHeight, minRoomWidth) / 2;
                 
                 return Vector3.Distance(Player.transform.position, y.center) <=
                        min;
@@ -78,9 +84,9 @@ public class BSPGennerator : RandomWalkGenerator
 
                         var trapPos = spawnCenter +
                                       new Vector3(dir.x, dir.y,
-                                          0f) * (Mathf.Min(spawnRoom.size.x / 2.5f, spawnRoom.size.y / 2.5f) - _mapSettings.offset);
+                                          0f) * (Mathf.Min(spawnRoom.size.x / 2.5f, spawnRoom.size.y / 2.5f) - offset);
                         if (Vector2.Distance(trapPos, Player.position) <=
-                            Math.Min(_mapSettings.minRoomHeight, _mapSettings.minRoomWidth) / 2)
+                            Math.Min(minRoomHeight, minRoomWidth) / 2)
                             continue;
                         
                         Instantiate(Trap,trapPos , Quaternion.identity );
@@ -92,7 +98,10 @@ public class BSPGennerator : RandomWalkGenerator
                 foreach (var random2d in Direction.directionsDiag)
                 {
 
-                    var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/2.5f, spawnRoom.size.y/2.5f)-_mapSettings.offset);
+                    var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/2.5f, spawnRoom.size.y/2.5f)-offset);
+                    if (Vector2.Distance(enemyPos, Player.position) <=
+                        Math.Min(minRoomHeight, minRoomWidth) / 3)
+                        continue;
                     Instantiate(Enemy,enemyPos , Quaternion.identity );
 
                     enemyCounters[spawnCenter][0]++;
@@ -108,7 +117,7 @@ public class BSPGennerator : RandomWalkGenerator
 
     public void CreateRooms()
     {
-        roomList = RandomGenerationAlgs.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(_mapSettings.dungeonWidth, _mapSettings.dungeonHeight, 0)), _mapSettings.minRoomWidth, _mapSettings.minRoomHeight);
+        roomList = RandomGenerationAlgs.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPos, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
         firstRoom = roomList.First();
         var floor = CreateSimpleRooms(roomList);
         foreach (var room in roomList)
@@ -230,9 +239,9 @@ public class BSPGennerator : RandomWalkGenerator
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         foreach (var room in roomsList)
         {
-            for (int col = _mapSettings.offset; col < room.size.x - _mapSettings.offset; col++)
+            for (int col = offset; col < room.size.x - offset; col++)
             {
-                for (int row = _mapSettings.offset; row < room.size.y - _mapSettings.offset; row++)
+                for (int row = offset; row < room.size.y - offset; row++)
                 {
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
                     floor.Add(position);
@@ -249,33 +258,30 @@ public class BSPGennerator : RandomWalkGenerator
     
 
 }
-
-[CustomEditor(typeof(BSPGennerator))]
-public class LevelGeneratorEditor2 : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-        //Reference to our script
-        BSPGennerator levelGen = (BSPGennerator) target;
-
-        //Only show the mapsettings UI if we have a reference set up in the editor
-        if (levelGen._mapSettings != null)
-        {
-            Editor mapSettingEditor = CreateEditor(levelGen._mapSettings);
-            mapSettingEditor.OnInspectorGUI();
-
-            if (GUILayout.Button("Generate"))
-            {
-                levelGen.Clear();
-                levelGen.CreateRooms();
-            }
-
-            if (GUILayout.Button("Clear"))
-            {
-                levelGen.Clear();
-            }
-        }
-    }
-}
+// #if UNITY_EDITOR
+// [CustomEditor(typeof(BSPGennerator))]
+// public class LevelGeneratorEditor2 : Editor
+// {
+//     public override void OnInspectorGUI()
+//     {
+//         base.OnInspectorGUI();
+//
+//         //Reference to our script
+//         BSPGennerator levelGen = (BSPGennerator) target;
+//
+//         //Only show the mapsettings UI if we have a reference set up in the edito
+//
+//         if (GUILayout.Button("Generate"))
+//             {
+//                 levelGen.Clear();
+//                 levelGen.CreateRooms();
+//             }
+//
+//             if (GUILayout.Button("Clear"))
+//             {
+//                 levelGen.Clear();
+//             }
+//         }
+//     
+// }
+// #endif

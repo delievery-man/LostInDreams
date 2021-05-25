@@ -153,6 +153,7 @@ MonoBehaviour:
   spawnRoom: {x: 0, y: 0, z: 0}
   damage: 1
   Loot:
+  - {fileID: 1817497477932108824, guid: 195d4cf73df37ae40859492a26b5c8b0, type: 3}
   - {fileID: 1817497477932108824, guid: 5af0028abf2d20c48bb9a1333dca4eb9, type: 3}
   - {fileID: 1817497477932108824, guid: b056a7c689db3a8428ceb3a741dbc4e2, type: 3}
 --- !u!114 &5319378555813855795

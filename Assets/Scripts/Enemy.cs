@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.SceneManagement;
+
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             Destroy(explosionRef, 3);
             var deathPoint = gameObject.GetComponent<Transform>().position;
-            if (Random.Range(1, 7) == 1)
+            if (Random.Range(1, 3) == 1)
             {
                 Instantiate(Loot[Random.Range(0, Loot.Count)], deathPoint, Quaternion.identity);
             }

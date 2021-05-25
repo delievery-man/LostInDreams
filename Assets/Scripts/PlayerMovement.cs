@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform keyFollowPoint;
     public bool isPicked;
     public bool isFinished;
+    private Inventory inventory;
+    public GameObject keyImage;
+    public GameObject salveImage;
+    public GameObject shield;
+    public Shield shieldTimer;
+    public shotTimer shotTimer;
 
     // public Transform keyFollowPoint;
     // public bool isPicked;
@@ -27,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _tilemap = GetComponent<Tilemap>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -59,5 +67,63 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("yDir", direction.y);
         _animator.SetFloat("speed", direction.sqrMagnitude);
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+            if (other.gameObject.CompareTag("Key"))
+            {
+                for (var i = 0; i < inventory.slots.Count; i++)
+                {
+                    if (inventory.isTaken[i])
+                        continue;
+                    inventory.isTaken[i] = true;
+                    inventory.itemsList[i] = new Item {itemType = Item.ItemType.Key};
+                    Instantiate(keyImage, inventory.slots[i].transform.position, Quaternion.identity,
+                            inventory.slots[i].transform);
+                    break;
+                }
+                Destroy(other.gameObject);
+                
+            }
+                
+            
+        
+            else if (other.gameObject.CompareTag("Salve"))
+            {
+                for (var i = 0; i < inventory.slots.Count; i++)
+                {
+                    if (inventory.isTaken[i]) continue;
+                    inventory.isTaken[i] = true;
+                    inventory.itemsList[i] = new Item {itemType = Item.ItemType.Salve};
+                    Instantiate(salveImage, inventory.slots[i].transform.position, Quaternion.identity,
+                        inventory.slots[i].transform);
+                    break;
+                }
+                Destroy(other.gameObject);
+            }
+            
+            else if (other.gameObject.CompareTag("ShotGun"))
+            {
+                GetComponent<Shooting>().weapon =
+                    Shooting.WeaponTypes.ShotGun;
+                shotTimer.ResetTimer();
+                shotTimer.gameObject.SetActive(true);
+                shotTimer.isCd = true;
+                Destroy(other.gameObject);
+            }
+
+            else if (other.gameObject.CompareTag("Shield"))
+            { 
+                
+                shield.SetActive(true);
+                shieldTimer.gameObject.SetActive(true);
+                shieldTimer.ResetTimer();
+                shieldTimer.isCd = true;
+                Destroy(other.gameObject);
+               
+            }
+            
     }
 }

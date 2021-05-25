@@ -81,8 +81,10 @@
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\udate.cs" />
      <Compile Include="Assets\Scripts\BSPGennerator.cs" />
-     <Compile Include="Assets\Scripts\Global Scripts\MapSettings.cs" />
+     <Compile Include="Assets\Scripts\MapSettings.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
+     <Compile Include="Assets\Shield.cs" />
+     <Compile Include="Assets\shotTimer.cs" />
      <None Include="Assets\Sprites\RF_Catacombs_v1.0\public-license.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
