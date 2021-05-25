@@ -20,13 +20,7 @@ public class Inventory: MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
-        {
             DropItem(slots[0], 0);
-            // if (slots[0].transform.childCount <= 0)
-            // {
-            //     isTaken[0] = false;
-            // }
-        }
         else if (Input.GetKeyDown(KeyCode.X))
             DropItem(slots[1], 1);
         else if (Input.GetKeyDown(KeyCode.C))

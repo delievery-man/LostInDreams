@@ -151,7 +151,7 @@ MonoBehaviour:
   maxHealth: 5
   vision: 0
   spawnRoom: {x: 0, y: 0, z: 0}
-  damage: 1
+  damage: 0
   Loot:
   - {fileID: 1817497477932108824, guid: 195d4cf73df37ae40859492a26b5c8b0, type: 3}
   - {fileID: 1817497477932108824, guid: 5af0028abf2d20c48bb9a1333dca4eb9, type: 3}

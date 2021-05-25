@@ -22,13 +22,12 @@ ScriptsOnlyBuild:
     - Trap
     - VolumeValue
     - bulletMovement
+    - intro
     - shotTimer
     - udate
     NavMeshComponents.dll:
     - UnityEngine.AI.NavMeshModifier
     - UnityEngine.AI.NavMeshSurface2d
-    NavMeshComponentsEditor.dll:
-    - UnityEditor.AI.NavMeshAssetManager2d
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -85,8 +84,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -137,9 +138,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 5330}
+      Script: {instanceID: 5332}
     - Class: 114
-      Script: {instanceID: 5748}
+      Script: {instanceID: 5750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -220,55 +221,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3974}
     - Class: 114
-      Script: {instanceID: 4696}
+      Script: {instanceID: 4698}
     - Class: 114
-      Script: {instanceID: 4706}
+      Script: {instanceID: 4708}
     - Class: 114
-      Script: {instanceID: 4716}
+      Script: {instanceID: 4718}
     - Class: 114
-      Script: {instanceID: 4772}
-    - Class: 114
-      Script: {instanceID: 4946}
+      Script: {instanceID: 4774}
     - Class: 114
       Script: {instanceID: 4948}
     - Class: 114
-      Script: {instanceID: 4970}
+      Script: {instanceID: 4950}
     - Class: 114
-      Script: {instanceID: 5214}
+      Script: {instanceID: 4972}
     - Class: 114
-      Script: {instanceID: 5238}
+      Script: {instanceID: 5216}
     - Class: 114
-      Script: {instanceID: 5330}
+      Script: {instanceID: 5240}
     - Class: 114
-      Script: {instanceID: 5460}
+      Script: {instanceID: 5332}
     - Class: 114
-      Script: {instanceID: 5520}
+      Script: {instanceID: 5462}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5522}
     - Class: 114
-      Script: {instanceID: 5616}
+      Script: {instanceID: 5528}
     - Class: 114
-      Script: {instanceID: 5648}
+      Script: {instanceID: 5618}
     - Class: 114
-      Script: {instanceID: 5694}
+      Script: {instanceID: 5650}
     - Class: 114
-      Script: {instanceID: 5748}
+      Script: {instanceID: 5696}
     - Class: 114
-      Script: {instanceID: 5756}
+      Script: {instanceID: 5750}
     - Class: 114
-      Script: {instanceID: 5850}
+      Script: {instanceID: 5758}
     - Class: 114
-      Script: {instanceID: 5968}
+      Script: {instanceID: 5852}
     - Class: 114
-      Script: {instanceID: 6072}
+      Script: {instanceID: 5970}
     - Class: 114
-      Script: {instanceID: 6120}
+      Script: {instanceID: 6074}
     - Class: 114
-      Script: {instanceID: 6666}
+      Script: {instanceID: 6122}
     - Class: 114
-      Script: {instanceID: 6934}
+      Script: {instanceID: 6668}
     - Class: 114
-      Script: {instanceID: 7140}
+      Script: {instanceID: 6936}
+    - Class: 114
+      Script: {instanceID: 7144}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -369,35 +370,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3904}
     - Class: 114
-      Script: {instanceID: 4384}
+      Script: {instanceID: 4118}
     - Class: 114
-      Script: {instanceID: 4664}
+      Script: {instanceID: 4386}
     - Class: 114
-      Script: {instanceID: 4696}
+      Script: {instanceID: 4666}
     - Class: 114
-      Script: {instanceID: 4964}
+      Script: {instanceID: 4698}
     - Class: 114
-      Script: {instanceID: 4990}
+      Script: {instanceID: 4966}
     - Class: 114
-      Script: {instanceID: 5110}
+      Script: {instanceID: 4992}
     - Class: 114
-      Script: {instanceID: 5322}
+      Script: {instanceID: 5112}
     - Class: 114
-      Script: {instanceID: 5330}
+      Script: {instanceID: 5324}
     - Class: 114
-      Script: {instanceID: 5546}
+      Script: {instanceID: 5332}
     - Class: 114
-      Script: {instanceID: 5596}
+      Script: {instanceID: 5548}
     - Class: 114
-      Script: {instanceID: 5748}
+      Script: {instanceID: 5598}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 5750}
     - Class: 114
-      Script: {instanceID: 6172}
+      Script: {instanceID: 5796}
     - Class: 114
-      Script: {instanceID: 39250}
+      Script: {instanceID: 6174}
     - Class: 114
-      Script: {instanceID: 47150}
+      Script: {instanceID: 6990}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -429,6 +430,67 @@ ScriptsOnlyBuild:
     - Class: 483693784
       Script: {instanceID: 0}
     - Class: 1839735485
+      Script: {instanceID: 0}
+    Assets/Scenes/TVScene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1566}
+    - Class: 114
+      Script: {instanceID: 1568}
+    - Class: 114
+      Script: {instanceID: 1570}
+    - Class: 114
+      Script: {instanceID: 2504}
+    - Class: 114
+      Script: {instanceID: 2986}
+    - Class: 114
+      Script: {instanceID: 5332}
+    - Class: 114
+      Script: {instanceID: 5750}
+    - Class: 114
+      Script: {instanceID: 33486}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -965,6 +1027,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 5a9c76869ff677e5411b1330fef91395
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Shield
   - hash:
       serializedVersion: 2
       Hash: 08705cef837f5d18a4c86b19b1ccf347
@@ -1507,6 +1575,12 @@ ScriptsOnlyBuild:
     className: CinemachineUniversalPixelPerfect
   - hash:
       serializedVersion: 2
+      Hash: 3379415fc36d2920316ce3ce68d92051
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: shotTimer
+  - hash:
+      serializedVersion: 2
       Hash: 84e1b0a548d467bdaf3a16f89a2dbefd
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
@@ -1549,19 +1623,14 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 5a9c76869ff677e5411b1330fef91395
+      Hash: 55e7dfe25124ccfe4d2068aea801262f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Shield
-  - hash:
-      serializedVersion: 2
-      Hash: 3379415fc36d2920316ce3ce68d92051
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: shotTimer
+    className: intro
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenuScene.unity
+  - Assets/Scenes/TVScene.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/FinishScene.unity
-  playerPath: C:/Users/egoru/Desktop/TestGameLostInDreams.exe
+  playerPath: "C:/Users/\u0414\u0430\u0448\u0430/UnityProjects/LIND/lid2/TestGameLostInDreams.exe"
