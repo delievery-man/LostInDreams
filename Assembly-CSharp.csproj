@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\FinishMenu.cs" />
      <Compile Include="Assets\Scripts\EnemyFollowing.cs" />
      <Compile Include="Assets\Scripts\enemyMove.cs" />
+     <Compile Include="Assets\Scripts\TutorialMenu.cs" />
      <Compile Include="Assets\Scripts\Bedroom.cs" />
      <Compile Include="Assets\Scripts\WallGenerator.cs" />
      <Compile Include="Assets\Scripts\DealDamage.cs" />
@@ -87,7 +88,6 @@
      <Compile Include="Assets\Scripts\MapSettings.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\shotTimer.cs" />
-     <Compile Include="Assets\Scripts\TutorialMenu.cs" />
      <None Include="Assets\Sprites\RF_Catacombs_v1.0\public-license.txt" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

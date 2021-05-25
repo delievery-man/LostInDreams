@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5319378555813855795}
   - component: {fileID: 6600347192830480693}
   - component: {fileID: 8996407753112751682}
+  - component: {fileID: 5436504310397806988}
   m_Layer: 3
   m_Name: Enemy 2 2
   m_TagString: Enemy
@@ -77,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0238f8b8a6149cf4b86719ab22a23e74, type: 3}
+  m_Sprite: {fileID: -8307170383576493217, guid: 1870cf413ed8c2d428ee231345b8ba9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.14, y: 0.21}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,8 +106,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.14, y: 0.21}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -212,3 +213,22 @@ MonoBehaviour:
   floor: {fileID: 0}
   roomCenter: {x: 0, y: 0, z: 0}
   target: {fileID: 4540797851376219102, guid: b657a5162738d784ab8c5d7e4320e0d7, type: 3}
+--- !u!95 &5436504310397806988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917871955561008080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a2ee07d73ce885459a92da9554cafc6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
