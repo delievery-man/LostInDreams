@@ -26,13 +26,15 @@ public class EnemyFollowing : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(target.position);
-        
+
+
     }
 
  

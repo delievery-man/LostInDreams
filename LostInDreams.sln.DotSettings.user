@@ -1,0 +1,22 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=9BAE4807_002DA2C1_002D59BF_002D5015_002D6B357A6E1DF0_002Fd_003AAssets_002Fd_003AScripts_002Ff_003AEnemyFollowing_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=25a21182_002Dfd3f_002D45ef_002Da4da_002Da08779915925/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="dealingDamageWithEnumeratorPasses #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::341345DE-350C-2E2F-EDA4-459798A58409::.NETFramework,Version=v4.7.1::test.PlayerTakeDamageAndDie&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=47770acc_002De77c_002D49a3_002D88cb_002D088ea8e21ce5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="dealingDamageWithEnumeratorPasses" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4E3EA2CF-238B-5A9A-A095-A0CF95294630::.NETFramework,Version=v4.7.1::dealingDamage.dealingDamageWithEnumeratorPasses&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bfb15a79_002Dc6ef_002D47be_002Dbc69_002D2195680136ba/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlayerTakeDamageAndDie" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::341345DE-350C-2E2F-EDA4-459798A58409::.NETFramework,Version=v4.7.1::test.PlayerTakeDamageAndDie&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fe09fb59_002D575c_002D41d5_002D91e6_002D873e03991e3c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="dealingDamageWithEnumeratorPasses #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::4E3EA2CF-238B-5A9A-A095-A0CF95294630::.NETFramework,Version=v4.7.1::dealingDamage.dealingDamageWithEnumeratorPasses&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

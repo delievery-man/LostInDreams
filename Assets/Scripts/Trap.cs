@@ -19,6 +19,7 @@ public class Trap : MonoBehaviour
 
             var bullet = Instantiate(bullePrefab, transform.position, Quaternion.identity);
 
+
             var direction = (GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - transform.position).normalized;
             bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, direction.y) *  0.02f);
             yield return new WaitForSeconds(2);

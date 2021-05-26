@@ -21,15 +21,19 @@ public class BSPGennerator : RandomWalkGenerator
     public int offset;
     private Vector2Int farest;
     public Transform Enemy;
+    public Transform Boss;
     private List<Vector2Int> roomCenters = new List<Vector2Int>();
     private List<BoundsInt> roomList;
     public int counter;
     private BoundsInt firstRoom;
-    public Vector3 currRoom;
+    public Vector3Int currRoom;
+    public Vector3 lastRoom;
     private int TotalEnemyCount = 8;
-    public Dictionary<Vector3, List<int>>enemyCounters = new Dictionary<Vector3, List<int>>();
+    public Dictionary<Vector3Int, List<int>>enemyCounters = new Dictionary<Vector3Int, List<int>>();
     private bool FirstWaveKilled = false;
     public GameObject Trap;
+    public Vector3 bossSpawn;
+    private bool bossNotSpawned = true;
     private void Awake()
     {
         Clear(); 
@@ -40,15 +44,17 @@ public class BSPGennerator : RandomWalkGenerator
     {
         Enemy.GetComponent<EnemyFollowing>().target = Player.transform;
         foreach (var center in roomList
-            .Select(x => x.center)
+            .Select(x => Vector3Int.RoundToInt(x.center))
             .ToList())
         {
-            enemyCounters[new Vector3(0f, 0f, 0f)] = new List<int>(2){0, 0};
+            enemyCounters[new Vector3Int(0, 0, 0)] = new List<int>(2){0, 0};
             if (!enemyCounters.ContainsKey(center))
             {
                 enemyCounters[center] =new List<int>(2){0, 0};
             }
         }
+
+        bossSpawn = new Vector3(keyPos.x, keyPos.y, 0f);
     }
 
     private void FixedUpdate()
@@ -63,11 +69,10 @@ public class BSPGennerator : RandomWalkGenerator
                        min;
             });
       
-        var spawnCenter = spawnRoom.center;
-        if (spawnCenter != Vector3.zero)
-        {
+        var spawnCenter = Vector3Int.RoundToInt(spawnRoom.center);
+        if (spawnCenter != Vector3Int.zero)
             currRoom = spawnCenter;
-        }
+        
         
         if (spawnCenter != Vector3.zero && enemyCounters[spawnCenter][0] == 0  && new Vector3(playerPos.x, playerPos.y, 0f)!=spawnCenter)
         {
@@ -76,9 +81,7 @@ public class BSPGennerator : RandomWalkGenerator
             if (enemyCounters[spawnCenter][1]<3)
             {
                 if (enemyCounters[spawnCenter][1] == 0)
-                {
-                    
-                   
+                
                     foreach (var dir in Direction.directions)
                     {
 
@@ -91,8 +94,6 @@ public class BSPGennerator : RandomWalkGenerator
                         
                         Instantiate(Trap,trapPos , Quaternion.identity );
                     }
-                    
-                }
                 
                 
                 foreach (var random2d in Direction.directionsDiag)
@@ -108,6 +109,12 @@ public class BSPGennerator : RandomWalkGenerator
                     currRoom = spawnCenter;
                 }
                 enemyCounters[spawnCenter][1]++;
+            }
+
+            if (bossSpawn == spawnCenter && bossNotSpawned)
+            {
+                Instantiate(Boss, bossSpawn, Quaternion.identity);
+                bossNotSpawned = false;
             }
 
             
@@ -134,7 +141,6 @@ public class BSPGennerator : RandomWalkGenerator
         // visualizer.PaintKey(keyPos);
         visualizer.SpawnPlayer(Player, playerPos);
         
-        visualizer.SpawnKey(Key, keyPos);
         visualizer.SpawnExit(Exit, exitPos);
         
         WallGenerator.CreateWalls(floor, visualizer);

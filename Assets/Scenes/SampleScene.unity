@@ -890,9 +890,12 @@ MonoBehaviour:
   dungeonHeight: 100
   offset: 3
   Enemy: {fileID: 6917871955561008073, guid: 63642c10953c8dc48b959c03d6eea774, type: 3}
+  Boss: {fileID: 6917871955561008073, guid: afd8a04bcae57c545a7fb23bc9e89cc6, type: 3}
   counter: 0
   currRoom: {x: 0, y: 0, z: 0}
+  lastRoom: {x: 0, y: 0, z: 0}
   Trap: {fileID: 7011683713191770486, guid: 5ddb5439fc21879468377a1abd159462, type: 3}
+  bossSpawn: {x: 0, y: 0, z: 0}
 --- !u!1 &293979607
 GameObject:
   m_ObjectHideFlags: 0
@@ -11038,7 +11041,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.16
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 7ee712538580ba348a515f7206b1a32a, type: 2}
@@ -53656,7 +53659,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974525025}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -53832,6 +53835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cd: 10
   isCd: 0
+  isTest: 0
 --- !u!114 &2032682013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54571,6 +54575,7 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 95c74343872f31445b2ad0f45a3da3e8, type: 3}
   emptyHeart: {fileID: 21300000, guid: e625b37345bc6d1419d90410b0287870, type: 3}
   isInvulnerable: 0
+  isDead: 0
   shieldTimer: {fileID: 2032682012}
 --- !u!114 &3909964877619735201
 MonoBehaviour:

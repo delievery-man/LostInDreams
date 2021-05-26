@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     private UnityEngine.Object explosion;
     public float vision;
-    public Vector3 spawnRoom;
+    public Vector3Int spawnRoom;
     public float damage = 2;
     public List<Transform> Loot;
 

@@ -16,6 +16,7 @@ public class DealDamage : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public bool isInvulnerable = false;
+    public bool isDead;
     public Shield shieldTimer;
     
 
@@ -37,10 +38,12 @@ public class DealDamage : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
         }
+
+        isInvulnerable = shieldTimer.GetComponent<Shield>().isCd;
     }
     public void PlayerDealDamage(float damage)
     {
-        if (!shieldTimer.GetComponent<Shield>().isCd && health>0)
+        if (!isInvulnerable && health >0)
         {
             health -= damage;
             CheckDeath();
@@ -52,6 +55,8 @@ public class DealDamage : MonoBehaviour
     {
         if (health <= 0)
         {
+            Destroy(gameObject);
+            isDead = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         };
     }
