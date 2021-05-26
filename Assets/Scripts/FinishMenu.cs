@@ -5,7 +5,7 @@ public class FinishMenu : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("HardLevel");
     }
 
     public void ExitGame()

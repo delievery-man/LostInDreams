@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
             GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]--;
             Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]);
             Destroy(gameObject);
+            SoundManager.PlaySound("enemy");
             Destroy(explosionRef, 3);
             var deathPoint = gameObject.GetComponent<Transform>().position;
             if (Random.Range(1, 3) == 1)

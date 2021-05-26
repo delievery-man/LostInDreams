@@ -18,9 +18,12 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            
             var mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var playerPos = (Vector2)transform.position;
-
+            
+            SoundManager.PlaySound("fire");
+            
             if (weapon == WeaponTypes.Single)
             {
                 var bullet = Instantiate(this.bullet, shotPoint.position, Quaternion.identity);

@@ -32,13 +32,15 @@ public class Inventory: MonoBehaviour
         foreach (Transform child in slot.transform)
         {
             if (itemsList[i].itemType == Item.ItemType.Key)
+            {
                 child.GetComponent<SpawFromInventory>().SpawnDroppedItem(i);
+            }
             else if (itemsList[i].itemType == Item.ItemType.Salve)
             {
                 GetComponent<DealDamage>().health++;
-                isTaken[i] = false;
+                
             }
-            
+            isTaken[i] = false;
 
             Destroy(child.gameObject);
         }

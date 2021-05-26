@@ -37,6 +37,7 @@ public class Boss : MonoBehaviour
             GameObject explosionRef = (GameObject)Instantiate(explosion);
             explosionRef.transform.position = transform.position;
             Destroy(gameObject);
+            SoundManager.PlaySound("boss");
             Destroy(explosionRef, 3);
             var deathPoint = gameObject.GetComponent<Transform>().position;
             Instantiate(Loot[0], deathPoint, Quaternion.identity);

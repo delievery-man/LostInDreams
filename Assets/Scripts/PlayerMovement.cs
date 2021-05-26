@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -64,9 +65,18 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private bool IsInventoryFool()
     {
-        
+        var count = inventory.isTaken.Count(t => t);
+
+        return count == inventory.isTaken.Count;
+    }
+    
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {   
+        if (!IsInventoryFool())
+        {
             if (other.gameObject.CompareTag("Key"))
             {
                 for (var i = 0; i < inventory.slots.Count; i++)
@@ -76,15 +86,16 @@ public class PlayerMovement : MonoBehaviour
                     inventory.isTaken[i] = true;
                     inventory.itemsList[i] = new Item {itemType = Item.ItemType.Key};
                     Instantiate(keyImage, inventory.slots[i].transform.position, Quaternion.identity,
-                            inventory.slots[i].transform);
+                        inventory.slots[i].transform);
                     break;
                 }
+
                 Destroy(other.gameObject);
-                
+                SoundManager.PlaySound("key");
             }
-                
-            
-        
+
+
+
             else if (other.gameObject.CompareTag("Salve"))
             {
                 for (var i = 0; i < inventory.slots.Count; i++)
@@ -96,29 +107,31 @@ public class PlayerMovement : MonoBehaviour
                         inventory.slots[i].transform);
                     break;
                 }
-                Destroy(other.gameObject);
-            }
-            
-            else if (other.gameObject.CompareTag("ShotGun"))
-            {
-                GetComponent<Shooting>().weapon =
-                    Shooting.WeaponTypes.ShotGun;
-                shotTimer.ResetTimer();
-                shotTimer.gameObject.SetActive(true);
-                shotTimer.isCd = true;
-                Destroy(other.gameObject);
-            }
 
-            else if (other.gameObject.CompareTag("Shield"))
-            { 
-                
-                shield.SetActive(true);
-                shieldTimer.gameObject.SetActive(true);
-                shieldTimer.ResetTimer();
-                shieldTimer.isCd = true;
                 Destroy(other.gameObject);
-               
             }
+        }
             
+        if (other.gameObject.CompareTag("ShotGun"))
+        {
+            GetComponent<Shooting>().weapon =
+                Shooting.WeaponTypes.ShotGun;
+            shotTimer.ResetTimer();
+            shotTimer.gameObject.SetActive(true);
+            shotTimer.isCd = true;
+            Destroy(other.gameObject);
+        }
+
+        else if (other.gameObject.CompareTag("Shield"))
+        { 
+            
+            shield.SetActive(true);
+            shieldTimer.gameObject.SetActive(true);
+            shieldTimer.ResetTimer();
+            shieldTimer.isCd = true;
+            Destroy(other.gameObject);
+           
+        }
+        
     }
 }
