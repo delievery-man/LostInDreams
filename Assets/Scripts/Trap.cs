@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Trap : MonoBehaviour
@@ -11,6 +10,7 @@ public class Trap : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public IEnumerator Spawn()
     {
         while (true)

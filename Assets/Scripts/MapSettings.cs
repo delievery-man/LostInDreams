@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
+using UnityEngine;
 
 
 public enum Algorithm
@@ -14,7 +11,7 @@ public enum Algorithm
      BSP
 }
 
-[System.Serializable]
+[Serializable]
 [CreateAssetMenu(fileName ="NewMapSettings", menuName = "Maps Settings", order = 0)]
 public class MapSettings : ScriptableObject
 {

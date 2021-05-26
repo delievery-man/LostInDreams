@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Boss : MonoBehaviour
 {
     public float health;
 
     public float maxHealth;
-    private UnityEngine.Object explosion;
+    private Object explosion;
     public float vision;
     public Vector3 spawnRoom;
     public float damage = 2;

@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,7 +12,7 @@ public class DealDamage : MonoBehaviour
     public List<Image> hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public bool isInvulnerable = false;
+    public bool isInvulnerable;
     public bool isDead;
     public Shield shieldTimer;
     

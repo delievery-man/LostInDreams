@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public static class RandomGenerationAlgs
     // Start is called before the first frame update
     public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPos, int walkLen)
     {
-        var path = new HashSet<Vector2Int>(){startPos};
+        var path = new HashSet<Vector2Int> {startPos};
         var prevPos = startPos;
         for (int i = 0; i < walkLen; i++)
         {
@@ -111,12 +110,12 @@ public static class RandomGenerationAlgs
 
 public static class Direction
 {
-    public static List<Vector2Int> directions = new List<Vector2Int>()
+    public static List<Vector2Int> directions = new List<Vector2Int>
     {
         Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right
     };
 
-    public static List<Vector2> directionsDiag = new List<Vector2>()
+    public static List<Vector2> directionsDiag = new List<Vector2>
     {
         Vector2.up, Vector2.down, Vector2.left, Vector2.right, (Vector2.down + Vector2.left).normalized,
         (Vector2.right + Vector2.down).normalized, (Vector2.up + Vector2.right).normalized, (Vector2.up + Vector2.left).normalized

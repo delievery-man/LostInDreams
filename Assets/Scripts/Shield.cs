@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +6,7 @@ public class Shield : MonoBehaviour
     public float cd;
 
     public bool isCd;
-    public bool isTest = false;
+    public bool isTest;
 
     private Image shieldImage;
     
@@ -22,7 +20,7 @@ public class Shield : MonoBehaviour
             shieldImage = GetComponent<Image>();
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         }
-        isCd = true;
+        isCd = false;
     }
 
     // Update is called once per frame
@@ -34,7 +32,7 @@ public class Shield : MonoBehaviour
             if (shieldImage.fillAmount<=0)
             {
                 shieldImage.fillAmount = 1;
-                isCd = false;
+                isCd = true;
                 player.shield.SetActive(false);
                 gameObject.SetActive(false);
             }

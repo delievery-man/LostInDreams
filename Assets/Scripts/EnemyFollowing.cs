@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using UnityEngine.AI;
+using UnityEngine.Tilemaps;
 
 public class EnemyFollowing : MonoBehaviour
 {

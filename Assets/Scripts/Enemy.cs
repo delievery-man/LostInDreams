@@ -1,17 +1,12 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     public float health;
 
     public float maxHealth;
-    private UnityEngine.Object explosion;
+    private Object explosion;
     public float vision;
     public Vector3Int spawnRoom;
     public float damage = 2;
@@ -22,7 +17,7 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
         explosion = Resources.Load("Explosion");
-        spawnRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().currRoom;
+        spawnRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().currRoom;
     }
 
 
@@ -42,9 +37,9 @@ public class Enemy : MonoBehaviour
         {
             GameObject explosionRef = (GameObject)Instantiate(explosion);
             explosionRef.transform.position = transform.position;
-            var currRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().currRoom;
-            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().enemyCounters[spawnRoom][0]--;
-            Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGennerator>().enemyCounters[spawnRoom][0]);
+            var currRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().currRoom;
+            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]--;
+            Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]);
             Destroy(gameObject);
             Destroy(explosionRef, 3);
             var deathPoint = gameObject.GetComponent<Transform>().position;

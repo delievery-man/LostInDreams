@@ -57,20 +57,18 @@
      <Compile Include="Assets\Scripts\RandomGenerationAlgs.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />
      <Compile Include="Assets\Scripts\FollowPlayer.cs" />
-     <Compile Include="Assets\Scripts\RandomWalkGenerator.cs" />
      <Compile Include="Assets\Scripts\KeySpawner.cs" />
      <Compile Include="Assets\Scripts\FollowPlayerSmoothing.cs" />
      <Compile Include="Assets\Scripts\spawnEnemies.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\FinishMenu.cs" />
      <Compile Include="Assets\Scripts\EnemyFollowing.cs" />
-     <Compile Include="Assets\Scripts\enemyMove.cs" />
      <Compile Include="Assets\Scripts\TutorialMenu.cs" />
      <Compile Include="Assets\Scripts\Bedroom.cs" />
      <Compile Include="Assets\Scripts\WallGenerator.cs" />
      <Compile Include="Assets\Scripts\DealDamage.cs" />
      <Compile Include="Assets\Scripts\TileMapVisualizer.cs" />
-     <Compile Include="Assets\Scripts\KeyHold.cs" />
+     <Compile Include="Assets\Scripts\BossShooting.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\VolumeValue.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
@@ -82,12 +80,11 @@
      <Compile Include="Assets\Scripts\VolumeValueSounds.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\intro.cs" />
-     <Compile Include="Assets\Scripts\BSPGennerator.cs" />
+     <Compile Include="Assets\Scripts\BSPGenerator.cs" />
      <Compile Include="Assets\Scripts\MapSettings.cs" />
+     <Compile Include="Assets\Scripts\Boss.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\shotTimer.cs" />
-     <Compile Include="Assets\Scripts\Boss.cs" />
-     <Compile Include="Assets\Scripts\BossShooting.cs" />
      <None Include="Assets\Scripts\Scripts.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
