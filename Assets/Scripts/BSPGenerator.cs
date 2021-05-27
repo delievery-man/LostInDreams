@@ -40,7 +40,7 @@ public class BSPGenerator: MonoBehaviour
     [SerializeField] private bool firstWaveKilled;
     [FormerlySerializedAs("Trap")] public GameObject trap;
     [NonSerialized] private Vector3 bossSpawn;
-    private bool bossNotSpawned = true;
+    private bool bossSpawned;
 
     public BSPGenerator(Transform enemy, Transform boss)
     {
@@ -127,10 +127,10 @@ public class BSPGenerator: MonoBehaviour
                 enemyCounters[spawnCenter][1]++;
             }
 
-            if (bossSpawn == spawnCenter && bossNotSpawned)
+            if (bossSpawn == spawnCenter && !bossSpawned)
             {
                 Instantiate(boss, bossSpawn, Quaternion.identity);
-                bossNotSpawned = false;
+                bossSpawned = true;
             }
 
             

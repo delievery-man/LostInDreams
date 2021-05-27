@@ -6,11 +6,12 @@ public class Door : MonoBehaviour
 {
     public Animator animator;
 
-    public bool doorOpen;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -29,6 +30,7 @@ public class Door : MonoBehaviour
     IEnumerator waiter()
     {
         animator.SetBool("Open", true);
+        SoundManager.PlaySound("door");
         var time = Time.time + 1.7f;
         yield return new WaitUntil(() => Time.time > time);
         

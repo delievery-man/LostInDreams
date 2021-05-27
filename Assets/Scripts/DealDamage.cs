@@ -53,6 +53,7 @@ public class DealDamage : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            SoundManager.PlaySound("player");
             isDead = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         };

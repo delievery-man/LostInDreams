@@ -22,6 +22,7 @@ public class EnemyFollowing : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+       
         
     }
 
@@ -29,7 +30,7 @@ public class EnemyFollowing : MonoBehaviour
     void Update()
     {
         agent.SetDestination(target.position);
-
+        
 
     }
 

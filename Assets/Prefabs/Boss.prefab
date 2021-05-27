@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6600347192830480693}
   - component: {fileID: 7654765187397087207}
   - component: {fileID: 8563934277871436901}
+  - component: {fileID: 6305911451053892158}
   m_Layer: 3
   m_Name: Boss
   m_TagString: Enemy
@@ -31,8 +32,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6917871955561008080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.182, y: 31.263, z: 0}
-  m_LocalScale: {x: 1.1455348, y: 1.0429827, z: 0.59599006}
+  m_LocalPosition: {x: 29.2727, y: 31.0943, z: 0}
+  m_LocalScale: {x: 1.2632722, y: 1.1460724, z: 0.59599006}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 68fa36e129df535469b4be72fe58c015, type: 3}
+  m_Sprite: {fileID: 2936045314496963061, guid: 220d7170caf12dc4fb09c64ab8459d4c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,8 +105,8 @@ BoxCollider2D:
   m_Offset: {x: 0.03, y: -0.73}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4852216, y: 0.79434395}
-    oldSize: {x: 1, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 2.56}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -206,3 +207,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullePrefab: {fileID: 8598697725076258024, guid: 2a0c543ed8a245b43aec1b866ac7e21c, type: 3}
+--- !u!95 &6305911451053892158
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917871955561008080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e9a5eb641ae8471409f5474d1162cde3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

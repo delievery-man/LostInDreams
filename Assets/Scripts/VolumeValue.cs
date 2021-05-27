@@ -1,23 +1,31 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class VolumeValue : MonoBehaviour
 {
-    public Slider Volume;
-    // Start is called before the first frame update
-    void Start()
+    public AudioMixer audioMixer;
+    public Slider musicSlider;
+
+    public void SetSoundsVolume(float soundVolume)
     {
-       
+        audioMixer.SetFloat("soundVolume", soundVolume);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMusicVolume(float musicVolume)
     {
-  
+        audioMixer.SetFloat("musicVolume", musicVolume);
     }
 
+    public void ClearVolume()
+    {
+        audioMixer.ClearFloat("musicVolume");
+    }
     public void SetVolume()
-    {
-        AudioListener.volume = Volume.value;
-    }
+     {
+         AudioListener.volume = musicSlider.value;
+     }
+
 }
+
+ 
