@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921a6510cecbf6c40a9f2ea19453551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
   vision: 0
   floor: {fileID: 0}
   roomCenter: {x: 0, y: 0, z: 0}

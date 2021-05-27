@@ -11,13 +11,18 @@ public class Enemy : MonoBehaviour
     public Vector3Int spawnRoom;
     public float damage = 2;
     public List<Transform> Loot;
+    public bool isTested;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         explosion = Resources.Load("Explosion");
-        spawnRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().currRoom;
+        if (!isTested)
+        {
+            spawnRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().currRoom;
+
+        }
     }
 
 
@@ -35,20 +40,27 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
-            GameObject explosionRef = (GameObject)Instantiate(explosion);
+            GameObject explosionRef = (GameObject) Instantiate(explosion);
             explosionRef.transform.position = transform.position;
-            var currRoom = GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().currRoom;
-            GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]--;
-            Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>().enemyCounters[spawnRoom][0]);
-            Destroy(gameObject);
-            SoundManager.PlaySound("enemy");
-            Destroy(explosionRef, 3);
-            var deathPoint = gameObject.GetComponent<Transform>().position;
-            if (Random.Range(1, 3) == 1)
+            if (!isTested)
             {
-                Instantiate(Loot[Random.Range(0, Loot.Count)], deathPoint, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>()
+                    .enemyCounters[spawnRoom][0]--;
+                Debug.Log(GameObject.FindGameObjectWithTag("Generator").GetComponent<BSPGenerator>()
+                    .enemyCounters[spawnRoom][0]);
+
+                SoundManager.PlaySound("enemy");
+
+                var deathPoint = gameObject.GetComponent<Transform>().position;
+                if (Random.Range(1, 4) == 1)
+                {
+                    Instantiate(Loot[Random.Range(0, Loot.Count)], deathPoint, Quaternion.identity);
+                }
             }
-        };
+            
+            Destroy(gameObject);
+            Destroy(explosionRef, 3);
+        }
     }
     
     private void CheckOverHeal()

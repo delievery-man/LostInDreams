@@ -41,6 +41,8 @@ public class BSPGenerator: MonoBehaviour
     [FormerlySerializedAs("Trap")] public GameObject trap;
     [NonSerialized] private Vector3 bossSpawn;
     private bool bossSpawned;
+    public Transform torch;
+    public float kefSpawn; 
 
     public BSPGenerator(Transform enemy, Transform boss)
     {
@@ -71,6 +73,16 @@ public class BSPGenerator: MonoBehaviour
         }
 
         bossSpawn = new Vector3(KeyPos.x, KeyPos.y, 0f);
+        foreach (var room in roomList)
+        {
+            var leftDown = room.min + (Vector3.right + Vector3.up).normalized * (offset + 4);
+            var rightUp = room.max + (Vector3.left + Vector3.down).normalized * (offset + 4);
+            Instantiate(torch, leftDown, Quaternion.identity);
+            Instantiate(torch, room.center, Quaternion.identity);
+            Instantiate(torch, rightUp, Quaternion.identity);
+            Instantiate(torch, leftDown + Vector3.up*(room.size.y - (10)), Quaternion.identity);
+            Instantiate(torch, rightUp + Vector3.down * (room.size.y - (10)), Quaternion.identity);
+        }
     }
 
     private void FixedUpdate()
@@ -103,7 +115,7 @@ public class BSPGenerator: MonoBehaviour
 
                         var trapPos = spawnCenter +
                                       new Vector3(dir.x, dir.y,
-                                          0f) * (Mathf.Min(spawnRoom.size.x / 2.5f, spawnRoom.size.y / 2.5f) - offset);
+                                          0f) * (Mathf.Min(spawnRoom.size.x / kefSpawn, spawnRoom.size.y / kefSpawn) - offset);
                         if (Vector2.Distance(trapPos, player.position) <=
                             Min(minRoomHeight, minRoomWidth) / 2)
                             continue;
@@ -115,10 +127,10 @@ public class BSPGenerator: MonoBehaviour
                 foreach (var random2d in Direction.directionsDiag)
                 {
 
-                    var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/2.5f, spawnRoom.size.y/2.5f)-offset);
-                    if (Vector2.Distance(enemyPos, player.position) <=
-                        Min(minRoomHeight, minRoomWidth) / 3)
-                        continue;
+                    var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/kefSpawn, spawnRoom.size.y/kefSpawn)-offset);
+                    // if (Vector2.Distance(enemyPos, player.position) <=
+                    //     Min(minRoomHeight, minRoomWidth) / 3)
+                    //     continue;
                     Instantiate(enemy,enemyPos , Quaternion.identity );
 
                     enemyCounters[spawnCenter][0]++;

@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform keyFollowPoint;
     public bool isPicked;
     public bool isFinished;
-    private Inventory inventory;
+    public bool isTested;
+    public Inventory inventory;
     public GameObject keyImage;
     public GameObject salveImage;
     public GameObject shield;
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _tilemap = GetComponent<Tilemap>();
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inventory = GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {   
         if (!IsInventoryFool())
         {
@@ -103,8 +104,12 @@ public class PlayerMovement : MonoBehaviour
                     if (inventory.isTaken[i]) continue;
                     inventory.isTaken[i] = true;
                     inventory.itemsList[i] = new Item {itemType = Item.ItemType.Salve};
-                    Instantiate(salveImage, inventory.slots[i].transform.position, Quaternion.identity,
-                        inventory.slots[i].transform);
+                    if (!isTested)
+                    {
+                        Instantiate(salveImage, inventory.slots[i].transform.position, Quaternion.identity,
+                            inventory.slots[i].transform);
+                    }
+                       
                     break;
                 }
 

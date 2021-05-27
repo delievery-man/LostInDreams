@@ -21,8 +21,8 @@ public class Trap : MonoBehaviour
 
 
             var direction = (GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position - transform.position).normalized;
-            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, direction.y) *  0.02f);
-            yield return new WaitForSeconds(2);
+            bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x, direction.y) *  0.03f);
+            yield return new WaitForSeconds(1);
 
         }
     }

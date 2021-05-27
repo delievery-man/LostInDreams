@@ -503,6 +503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseGame: 0
   PauseGameMenu: {fileID: 1378472122}
+  Paused: {fileID: 0}
+  Unpaused: {fileID: 0}
 --- !u!114 &92134468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +895,7 @@ MonoBehaviour:
   totalEnemyCount: 0
   firstWaveKilled: 0
   trap: {fileID: 7011683713191770486, guid: 5ddb5439fc21879468377a1abd159462, type: 3}
+  kefSpawn: 2.5
 --- !u!1 &293979607
 GameObject:
   m_ObjectHideFlags: 0
@@ -54241,7 +54244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6477642e097ee46bdf1358d3073361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Volume: {fileID: 1962608769}
+  audioMixer: {fileID: 0}
+  musicSlider: {fileID: 0}
 --- !u!1 &2048330329
 GameObject:
   m_ObjectHideFlags: 0

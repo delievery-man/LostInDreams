@@ -10,13 +10,14 @@ public class Shooting : MonoBehaviour
     public float bulletForce;
     public Transform shotPoint;
     public WeaponTypes weapon = WeaponTypes.Single;
+    private static bool isPaused;
     
     
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isPaused)
         {
             
             var mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,38 +45,16 @@ public class Shooting : MonoBehaviour
                     bullet.GetComponent<bulletMovement>().damage = 1;
                 }
             }
-            
-            
-            // else if (weapon == "shotgun")
-            // {
-            //     for (int i = 0; i < 3; i++)
-            //     {
-            //         
-            //     }
-            // }
-        
-
-            // var bullet1 =
-            // Instantiate(this.bullet, shotPoint.position, Quaternion.identity);
-            // var bullet2 =
-            //     Instantiate(this.bullet, shotPoint.position, Quaternion.identity);
-            // var bullet3 =
-            //     Instantiate(this.bullet, shotPoint.position, Quaternion.identity);
-            
-
-            // var direction1 =  (mousePos - playerPos).normalized;
-            // var direction2 = (Vector2.Perpendicular(direction1)/6 + direction1).normalized;
-            // var direction3 = (-Vector2.Perpendicular(direction1)/6 + direction1).normalized;
-            // bullet1.GetComponent<Rigidbody2D>().velocity = direction1 * bulletForce;
-            // bullet1.GetComponent<bulletMovement>().damage = 1;
-            // bullet2.GetComponent<Rigidbody2D>().velocity = direction2 * bulletForce;
-            // bullet2.GetComponent<bulletMovement>().damage = 1;
-            // bullet3.GetComponent<Rigidbody2D>().velocity = direction3 * bulletForce;
-            // bullet3.GetComponent<bulletMovement>().damage = 1;
-            //
-    
-
         }
+    }
+
+    public static void StopShooting()
+    {
+        isPaused = true;
+    }
+    public static void StartShooting()
+    {
+        isPaused = false;
     }
 
     public enum WeaponTypes

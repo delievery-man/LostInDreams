@@ -32,7 +32,7 @@ public class Shield : MonoBehaviour
             if (shieldImage.fillAmount<=0)
             {
                 shieldImage.fillAmount = 1;
-                isCd = true;
+                isCd = false;
                 player.shield.SetActive(false);
                 gameObject.SetActive(false);
             }

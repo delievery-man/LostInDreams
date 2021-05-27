@@ -60,4 +60,25 @@ public class test
        Assert.AreEqual(player.GetComponent<DealDamage>().isDead, true);
         yield return null;
     }
+    [UnityTest]
+    public IEnumerator PlayerTakesSalve()
+    {
+
+        GameObject player = 
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>("Player"));
+        GameObject salve = 
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>("Salve"));
+
+        player.GetComponent<PlayerMovement>().isTested = true;
+        player.GetComponent<DealDamage>().health = 3;
+        player.GetComponent<DealDamage>().isInvulnerable = false;
+        player.GetComponent<PlayerMovement>().inventory = player.GetComponent<Inventory>();
+        player.GetComponent<PlayerMovement>().inventory.itemsList = new Item[4];
+        player.GetComponent<PlayerMovement>().OnTriggerEnter2D(salve.GetComponent<Collider2D>());
+        Assert.AreEqual(true, player.GetComponent<PlayerMovement>().inventory.isTaken[0]);
+        yield return null;
+    }
+   
+    
+    
 }

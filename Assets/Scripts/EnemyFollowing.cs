@@ -31,7 +31,6 @@ public class EnemyFollowing : MonoBehaviour
     {
         agent.SetDestination(target.position);
         
-
     }
 
  
