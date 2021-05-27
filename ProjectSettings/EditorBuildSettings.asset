@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinishScene.unity
     guid: 105ebdabee0d9274d83327be0d5472b5
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/HardLevel.unity
+    guid: af72b37e14668774796cb093e2ce19eb
   m_configObjects: {}

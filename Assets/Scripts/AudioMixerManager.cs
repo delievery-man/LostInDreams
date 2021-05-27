@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,16 @@ public class AudioMixerManager : MonoBehaviour
     public AudioMixer audioMixer;
     public Slider musicSlider;
     public Slider soundsSlider;
+
+    private void Start()
+    {
+        var resMusic = audioMixer.GetFloat("musicVolume", out var valueMusic);
+        if (resMusic)
+            musicSlider.value = valueMusic;
+        var resSounds = audioMixer.GetFloat("soundsVolume", out var valueSounds);
+        if (resSounds)
+            soundsSlider.value = valueSounds;
+    }
 
     public void SetSoundsVolume()
     {
