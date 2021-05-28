@@ -148,10 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921a6510cecbf6c40a9f2ea19453551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  vision: 0
-  floor: {fileID: 0}
-  roomCenter: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
 --- !u!195 &6600347192830480693
 NavMeshAgent:
@@ -189,11 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  vision: 0
-  spawnRoom: {x: 0, y: 0, z: 0}
   damage: 3
-  Loot:
-  - {fileID: 1817497477932108824, guid: 14e65351d4e76114ca28679fd3d243c3, type: 3}
+  loot: []
 --- !u!114 &8563934277871436901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c55d253c3530d4dab7279b4d1e5653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullePrefab: {fileID: 8598697725076258024, guid: 2a0c543ed8a245b43aec1b866ac7e21c, type: 3}
+  bulletPrefab: {fileID: 8598697725076258024, guid: 2a0c543ed8a245b43aec1b866ac7e21c, type: 3}
 --- !u!95 &6305911451053892158
 Animator:
   serializedVersion: 3

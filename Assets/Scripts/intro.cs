@@ -7,15 +7,10 @@ using UnityEngine.UI;
 public class intro : MonoBehaviour
 {
     public GameObject speechCloud;
-
     public GameObject words;
-
     public AudioSource tvSound;
-
     public GameObject playerTv;
-
     public GameObject playerSleep;
-
     public GameObject text1;
     public GameObject text2;
     public GameObject text3;
@@ -25,14 +20,12 @@ public class intro : MonoBehaviour
     {
         var textMessage = transform.Find("Text 1").GetComponent<Text>();
         textWriter.AddWriter(textMessage, "Родители нам часто говорят: \"Насмотришься ужастиков на ночь, и будут сниться кошмары\"", 0.05f);
-        
 
         StartCoroutine(WaitForTV());
         StartCoroutine(WaitForText());
         StartCoroutine(Wait());
         StartCoroutine(WaitForSleep());
         StartCoroutine(WaitForEnd());
-
     }
 
     private IEnumerator WaitForTV()
@@ -63,8 +56,7 @@ public class intro : MonoBehaviour
         var textMessage = transform.Find("Text 2").GetComponent<Text>();
         textWriter.AddWriter(textMessage, "Мы им не верим", 0.05f);
     }
-
-
+    
     private IEnumerator WaitForSleep()
     {
         var time = Time.time + 13f;

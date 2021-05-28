@@ -9,8 +9,7 @@ public class SoundManager : MonoBehaviour
 {
     private static AudioClip _fireSound, _runSound, _enemySound, _doorSound, _keySound, _enemyDeath, _bossDeath;
     private static AudioSource _audioSource;
-    private static bool _isPaused;
-    
+
     private void Start()
     {
         _fireSound = Resources.Load<AudioClip>("shot");
@@ -23,54 +22,50 @@ public class SoundManager : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
     
-
     public static void PlaySound(string clip)
     {
-
         switch (clip)
+        {
+            case "fire":
             {
-                case "fire":
-                {
-                    _audioSource.PlayOneShot(_fireSound);
-                    break;
-                }
-                case "run":
-                {
-                    _audioSource.PlayOneShot(_runSound);
-                    break;
-                }
-                case "ghost":
-                {
-                    _audioSource.PlayOneShot(_enemySound);
-                    break;
-                }
-                case "door":
-                {
-                    _audioSource.PlayOneShot(_doorSound);
-                    break;
-                }
-                case "key":
-                {
-                    _audioSource.PlayOneShot(_keySound);
-                    break;
-                }
-                case "enemy":
-                {
-                    _audioSource.PlayOneShot(_enemyDeath);
-                    break;
-                }
-                case "boss":
-                {
-                    _audioSource.PlayOneShot(_bossDeath);
-                    break;
-                }
+                _audioSource.PlayOneShot(_fireSound);
+                break;
             }
-        
+            case "run":
+            {
+                _audioSource.PlayOneShot(_runSound);
+                break;
+            }
+            case "ghost":
+            {
+                _audioSource.PlayOneShot(_enemySound);
+                break;
+            }
+            case "door":
+            {
+                _audioSource.PlayOneShot(_doorSound);
+                break;
+            }
+            case "key":
+            {
+                _audioSource.PlayOneShot(_keySound);
+                break;
+            }
+            case "enemy":
+            {
+                _audioSource.PlayOneShot(_enemyDeath);
+                break;
+            }
+            case "boss":
+            {
+                _audioSource.PlayOneShot(_bossDeath);
+                break;
+            }
+        }
     }
 
     public static void StopSound()
     {
         _audioSource.Stop();
     }
-    
 }

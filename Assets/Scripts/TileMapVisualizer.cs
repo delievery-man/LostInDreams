@@ -51,24 +51,12 @@ public class TileMapVisualizer : MonoBehaviour
         PaintOneTile(wallTileMap, tile, wall);
     }
     
-    public void PaintKey(Vector2Int keyPos)
-    {
-        PaintOneTile(itemsTileMap, key, keyPos);
-    }
-    
-
     public void SpawnPlayer(Transform player, Vector2Int spawnPoint)
     {
         var tilePosition = itemsTileMap.WorldToCell((Vector3Int)spawnPoint);
         player.position = floorTilemap.CellToWorld(tilePosition);
     }
-
-    public void SpawnKey(Transform key, Vector2Int spawnPoint)
-    {
-        var tilePosition = itemsTileMap.WorldToCell((Vector3Int) spawnPoint);
-        key.position = floorTilemap.CellToWorld(tilePosition);
-    }
-
+    
     public void SpawnExit(Transform exit, Vector2Int spawnPoint)
     {
         var tilePosition = itemsTileMap.WorldToCell((Vector3Int) spawnPoint);

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class DealDamage : MonoBehaviour
 {
     public float health;
-    // Start is called before the first frame update
-    
     public int numOfHearts;
     public List<Image> hearts;
     public Sprite fullHeart;
@@ -15,7 +13,6 @@ public class DealDamage : MonoBehaviour
     public bool isInvulnerable;
     public bool isDead;
     public Shield shieldTimer;
-    
 
     private void FixedUpdate()
     {
@@ -38,6 +35,7 @@ public class DealDamage : MonoBehaviour
 
         isInvulnerable = shieldTimer.GetComponent<Shield>().isCd;
     }
+    
     public void PlayerDealDamage(float damage)
     {
         if (!isInvulnerable && health >0)
@@ -45,7 +43,6 @@ public class DealDamage : MonoBehaviour
             health -= damage;
             CheckDeath();
         }
-        
     }
 
     private void CheckDeath()

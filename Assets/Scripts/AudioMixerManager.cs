@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class AudioMixerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public AudioMixer audioMixer;
     public Slider musicSlider;
     public Slider soundsSlider;

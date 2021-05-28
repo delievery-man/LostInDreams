@@ -10,7 +10,6 @@ public class PlayerSound : MonoBehaviour
     private bool dPressed;
     private bool wPressed;
 
-    // Start is called before the first frame update
     void Start()
     {
         aPressed = false;
@@ -20,7 +19,6 @@ public class PlayerSound : MonoBehaviour
         isRunning = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))

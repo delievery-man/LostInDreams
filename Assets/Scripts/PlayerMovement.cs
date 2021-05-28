@@ -10,10 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
 
     private Animator _animator;
-    private Tilemap _tilemap;
-    public Transform keyFollowPoint;
-    public bool isPicked;
-    public bool isFinished;
     public bool isTested;
     public Inventory inventory;
     public GameObject keyImage;
@@ -22,19 +18,12 @@ public class PlayerMovement : MonoBehaviour
     public Shield shieldTimer;
     public shotTimer shotTimer;
 
-    // public Transform keyFollowPoint;
-    // public bool isPicked;
-    // public bool isFinished;
-
-    // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _tilemap = GetComponent<Tilemap>();
         inventory = GetComponent<Inventory>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         TakeInput();
@@ -59,11 +48,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetAnimator(Vector2 direction)
     {
-        
         _animator.SetFloat("xDir", direction.x);
         _animator.SetFloat("yDir", direction.y);
         _animator.SetFloat("speed", direction.sqrMagnitude);
-        
     }
 
     private bool IsInventoryFool()

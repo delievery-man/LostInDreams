@@ -4,9 +4,7 @@ using UnityEngine;
 public class Inventory: MonoBehaviour
 {
     public List<GameObject> slots;
-
     public List<bool> isTaken;
-    
     public Item[] itemsList;
 
     void Start()
@@ -33,7 +31,7 @@ public class Inventory: MonoBehaviour
         {
             if (itemsList[i].itemType == Item.ItemType.Key)
             {
-                child.GetComponent<SpawFromInventory>().SpawnDroppedItem(i);
+                child.GetComponent<SpawnFromInventory>().SpawnDroppedItem(i);
             }
             else if (itemsList[i].itemType == Item.ItemType.Salve)
             {
@@ -44,9 +42,6 @@ public class Inventory: MonoBehaviour
 
             Destroy(child.gameObject);
         }
-  
-
-        
     }
 }
 
@@ -55,10 +50,8 @@ public class Item
     public enum ItemType
     {
         Key,
-        Salve,
-        ShotGun
+        Salve
     }
 
     public ItemType itemType;
-    public int amount;
 }

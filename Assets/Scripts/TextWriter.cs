@@ -6,13 +6,9 @@ using UnityEngine.UI;
 public class TextWriter : MonoBehaviour
 {
     private Text uiText;
-
     private string textToWrite;
-
     private int charIndex;
-
     private float timePerChar;
-
     private float timer;
 
     public void AddWriter(Text uiText, string textToWrite, float timePerChar)

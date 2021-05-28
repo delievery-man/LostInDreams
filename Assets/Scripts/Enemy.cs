@@ -4,16 +4,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health;
-
     public float maxHealth;
     private Object explosion;
-    public float vision;
     public Vector3Int spawnRoom;
     public float damage = 2;
     public List<Transform> Loot;
     public bool isTested;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         health = maxHealth;
@@ -25,7 +22,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     public void DealDamage(float damage)
     {
         if (health>0)
@@ -33,7 +29,6 @@ public class Enemy : MonoBehaviour
             health -= damage;
             CheckDeath();
         }
-
     }
 
     private void CheckDeath()
@@ -63,21 +58,11 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    private void CheckOverHeal()
-    {
-        if (health >= maxHealth)
-        {
-            health = maxHealth;
-        };
-    }
-    
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<DealDamage>().PlayerDealDamage(damage);
-
-
         }
     }
 }

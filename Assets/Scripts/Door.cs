@@ -5,29 +5,21 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public Animator animator;
-
-    private GameObject player;
-    // Start is called before the first frame update
+    
     void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Key"))
         {
-            StartCoroutine(waiter());
+            StartCoroutine(Waiter());
         }
     }
-    
-    IEnumerator waiter()
+
+    private IEnumerator Waiter()
     {
         animator.SetBool("Open", true);
         SoundManager.PlaySound("door");

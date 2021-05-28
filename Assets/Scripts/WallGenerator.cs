@@ -3,7 +3,6 @@ using UnityEngine;
 
 public static class WallGenerator
 {
-    // Start is called before the first frame update
     public static void CreateWalls(HashSet<Vector2Int> floorPositions, TileMapVisualizer visualizer)
     {
         var walls = FindWalls(floorPositions, Direction.directions);
@@ -28,6 +27,5 @@ public static class WallGenerator
 
         return wallPositions;
     }
-
 }
 

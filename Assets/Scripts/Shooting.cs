@@ -3,23 +3,16 @@ using UnityEngine.Serialization;
 
 public class Shooting : MonoBehaviour
 {
-    // Start is called before the first frame update
     [FormerlySerializedAs("Bullet")] public GameObject bullet;
-    public float minDamage;
-    public float maxDamage;
     public float bulletForce;
     public Transform shotPoint;
     public WeaponTypes weapon = WeaponTypes.Single;
     private static bool isPaused;
-    
-    
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !isPaused)
         {
-            
             var mousePos = (Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var playerPos = (Vector2)transform.position;
             
@@ -61,6 +54,5 @@ public class Shooting : MonoBehaviour
     {
         Single,
         ShotGun
-        
     }
 }
