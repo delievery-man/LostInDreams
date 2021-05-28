@@ -150,9 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   maxHealth: 5
-  vision: 0
   spawnRoom: {x: 0, y: 0, z: 0}
-  damage: 1
+  damage: 0
   Loot:
   - {fileID: 1817497477932108824, guid: 195d4cf73df37ae40859492a26b5c8b0, type: 3}
   - {fileID: 1817497477932108824, guid: 5af0028abf2d20c48bb9a1333dca4eb9, type: 3}
@@ -171,10 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921a6510cecbf6c40a9f2ea19453551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  vision: 0
-  floor: {fileID: 0}
-  roomCenter: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
 --- !u!195 &6600347192830480693
 NavMeshAgent:

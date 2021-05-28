@@ -185,8 +185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  damage: 3
-  loot: []
+  vision: 0
+  spawnRoom: {x: 0, y: 0, z: 0}
+  damage: 0
+  Loot:
+  - {fileID: 1817497477932108824, guid: 14e65351d4e76114ca28679fd3d243c3, type: 3}
 --- !u!114 &8563934277871436901
 MonoBehaviour:
   m_ObjectHideFlags: 0

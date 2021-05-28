@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class BSPGenerator: MonoBehaviour
 {
+    [SerializeField]
+    private bool randomWalkRooms;
     [SerializeField] protected Vector2Int startPos = Vector2Int.zero;
 
     [FormerlySerializedAs("Player")] [SerializeField] protected Transform player;
@@ -21,6 +23,7 @@ public class BSPGenerator: MonoBehaviour
     private static Vector2Int KeyPos { get; set; }
     [NonSerialized] private Vector2Int playerPos;
     public static Vector2Int ExitPos { get; set; }
+
     public int minRoomWidth;
     public int minRoomHeight;
     public int dungeonWidth;
@@ -32,7 +35,9 @@ public class BSPGenerator: MonoBehaviour
     private List<BoundsInt> roomList;
     private BoundsInt firstRoom;
     [NonSerialized] public Vector3Int currRoom;
+    [SerializeField] private int totalEnemyCount = 8;
     public Dictionary<Vector3Int, List<int>> enemyCounters;
+    [SerializeField] private bool firstWaveKilled;
     [FormerlySerializedAs("Trap")] public GameObject trap;
     [NonSerialized] private Vector3 bossSpawn;
     private bool bossSpawned;
@@ -47,7 +52,8 @@ public class BSPGenerator: MonoBehaviour
 
     private void Awake()
     {
-        Clear();
+        Clear(); 
+        
     }
 
     void Start()
@@ -120,6 +126,9 @@ public class BSPGenerator: MonoBehaviour
                 {
 
                     var enemyPos = spawnCenter + new Vector3(random2d.x, random2d.y, 0f).normalized*(Mathf.Min(spawnRoom.size.x/kefSpawn, spawnRoom.size.y/kefSpawn)-offset);
+                    // if (Vector2.Distance(enemyPos, player.position) <=
+                    //     Min(minRoomHeight, minRoomWidth) / 3)
+                    //     continue;
                     Instantiate(enemy,enemyPos , Quaternion.identity );
                     enemyCounters[spawnCenter][0]++;
                     currRoom = spawnCenter;
@@ -132,7 +141,10 @@ public class BSPGenerator: MonoBehaviour
                 Instantiate(boss, bossSpawn, Quaternion.identity);
                 bossSpawned = true;
             }
+
+            
         }
+
     }
 
     public void CreateRooms()
@@ -144,6 +156,7 @@ public class BSPGenerator: MonoBehaviour
         {
                roomCenters.Add((Vector2Int) Vector3Int.RoundToInt(room.center)); 
         }
+        
         var corridors = ConnectRooms(floor, roomCenters);
         
         floor.UnionWith(corridors);
@@ -155,7 +168,10 @@ public class BSPGenerator: MonoBehaviour
         visualizer.SpawnExit(exit, ExitPos);
         
         WallGenerator.CreateWalls(floor, visualizer);
+        
     }
+
+
 
     private HashSet<Vector2Int> ConnectRooms(HashSet<Vector2Int> floor, List<Vector2Int> roomCenters)
     {
@@ -172,6 +188,8 @@ public class BSPGenerator: MonoBehaviour
             currentCenter = closest;
             corridors.UnionWith(newCorridor);
             var corridorCenter = newCorridor.ToList()[newCorridor.Count/2-1];
+
+
         }
 
         return corridors;
@@ -201,6 +219,8 @@ public class BSPGenerator: MonoBehaviour
             if(!floor.Contains(pos2Up))corridor.Add(pos2Up);
 
             if(!floor.Contains(position))corridor.Add(position);
+            
+
         }
         
         while (position.x != closest.x)
@@ -219,6 +239,7 @@ public class BSPGenerator: MonoBehaviour
                 pos2Down = position + Vector2Int.down;
                 if(!floor.Contains(pos2Down))corridor.Add(pos2Down);
                 if(!floor.Contains(position))corridor.Add(position);
+                
         }
         
         return corridor;
@@ -240,6 +261,7 @@ public class BSPGenerator: MonoBehaviour
         }
 
         return closest;
+        
     }
 
     private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
@@ -272,4 +294,6 @@ public class BSPGenerator: MonoBehaviour
             DestroyImmediate(obj);
         }
     }
+    
+
 }

@@ -7,15 +7,19 @@ public class Boss : MonoBehaviour
 
     public float maxHealth;
     private Object explosion;
+    public float vision;
+    public Vector3 spawnRoom;
     public float damage = 2;
-    public List<Transform> loot;
-    
+    public List<Transform> Loot;
+
+    // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         explosion = Resources.Load("Explosion");
     }
-    
+
+
     public void DealDamage(float damage)
     {
         if (health>0)
@@ -36,16 +40,19 @@ public class Boss : MonoBehaviour
             SoundManager.PlaySound("boss");
             Destroy(explosionRef, 3);
             var deathPoint = gameObject.GetComponent<Transform>().position;
-            Instantiate(loot[0], deathPoint, Quaternion.identity);
+            Instantiate(Loot[0], deathPoint, Quaternion.identity);
             
         };
     }
-
+    
+    
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<DealDamage>().PlayerDealDamage(damage);
+
+
         }
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class bulletMovement : MonoBehaviour
 {
+    // Start is called before the first frame update
     public float damage;
     private bool triggered;
 
@@ -19,6 +20,7 @@ public class bulletMovement : MonoBehaviour
                 other.GetComponent<Boss>().DealDamage(damage);
             }
             Destroy(gameObject);
+
         }
     }
 }
