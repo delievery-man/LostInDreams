@@ -22,7 +22,7 @@
     &lt;TestId&gt;NUnit3x::341345DE-350C-2E2F-EDA4-459798A58409::.NETFramework,Version=v4.7.1::test.PlayerHeals&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=65c1a90b_002Da04a_002D4e08_002Db9db_002Da4e442618a70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlayerHeals #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=65c1a90b_002Da04a_002D4e08_002Db9db_002Da4e442618a70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="PlayerHeals #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::341345DE-350C-2E2F-EDA4-459798A58409::.NETFramework,Version=v4.7.1::test.PlayerHeals&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
@@ -38,7 +38,7 @@
     &lt;TestId&gt;NUnit3x::341345DE-350C-2E2F-EDA4-459798A58409::.NETFramework,Version=v4.7.1::test.EnemyTakeNotFatalDamage&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fe09fb59_002D575c_002D41d5_002D91e6_002D873e03991e3c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="dealingDamageWithEnumeratorPasses #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fe09fb59_002D575c_002D41d5_002D91e6_002D873e03991e3c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="dealingDamageWithEnumeratorPasses #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::4E3EA2CF-238B-5A9A-A095-A0CF95294630::.NETFramework,Version=v4.7.1::dealingDamage.dealingDamageWithEnumeratorPasses&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;

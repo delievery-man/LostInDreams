@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\BossShooting.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\VolumeValue.cs" />
+     <Compile Include="Assets\Scripts\AudioMixerManager.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\SpawFromInventory.cs" />
      <Compile Include="Assets\Scripts\PlayerSounds.cs" />
@@ -88,7 +89,8 @@
      <Compile Include="Assets\Scripts\PlayerSound.cs" />
      <Compile Include="Assets\Scripts\shotTimer.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
-     <Compile Include="Assets\Scripts\AudioMixerManager.cs" />
+     <Compile Include="Assets\Scripts\GhostsBullets.cs" />
+     <Compile Include="Assets\Scripts\enemyShooting.cs" />
      <None Include="Assets\Scripts\Scripts.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>D:/unity/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

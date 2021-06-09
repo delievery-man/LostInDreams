@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,14 +14,18 @@ public class Shield : MonoBehaviour
 
     private PlayerMovement player;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        shieldImage = GetComponent<Image>();
+    }
+
     void Start()
     {
         if (!isTest)
         {
-            shieldImage = GetComponent<Image>();
+            
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         }
-        isCd = false;
     }
 
     // Update is called once per frame

@@ -29,7 +29,7 @@ public class BSPGenerator: MonoBehaviour
     public int dungeonWidth;
     public int dungeonHeight;
     public int offset;
-    public Transform enemy;
+    public Transform[] enemies;
     public Transform boss;
     public List<Vector2Int> roomCenters = new List<Vector2Int>();
     private List<BoundsInt> roomList;
@@ -46,7 +46,7 @@ public class BSPGenerator: MonoBehaviour
 
     public BSPGenerator(Transform enemy, Transform boss)
     {
-        this.enemy = enemy;
+        this.enemies = enemies;
         this.boss = boss;
     }
 
@@ -59,7 +59,10 @@ public class BSPGenerator: MonoBehaviour
     void Start()
     {
         CreateRooms();
-        enemy.GetComponent<EnemyFollowing>().target = player.transform;
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<EnemyFollowing>().target = player.transform;
+        }
         enemyCounters = new Dictionary<Vector3Int, List<int>>();
         foreach (var center in roomList
             .Select(x => Vector3Int.RoundToInt(x.center))
@@ -131,7 +134,7 @@ public class BSPGenerator: MonoBehaviour
                     // if (Vector2.Distance(enemyPos, player.position) <=
                     //     Min(minRoomHeight, minRoomWidth) / 3)
                     //     continue;
-                    Instantiate(enemy,enemyPos , Quaternion.identity );
+                    Instantiate(enemies[Random.Range(0, 2)],enemyPos , Quaternion.identity );
 
                     enemyCounters[spawnCenter][0]++;
                     currRoom = spawnCenter;

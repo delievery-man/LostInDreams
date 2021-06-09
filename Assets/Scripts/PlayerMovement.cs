@@ -132,7 +132,6 @@ public class PlayerMovement : MonoBehaviour
             
             shield.SetActive(true);
             shieldTimer.gameObject.SetActive(true);
-            shieldTimer.ResetTimer();
             shieldTimer.isCd = true;
             Destroy(other.gameObject);
            

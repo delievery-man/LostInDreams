@@ -63,7 +63,6 @@ public class test
     [UnityTest]
     public IEnumerator PlayerTakesSalve()
     {
-
         GameObject player = 
             MonoBehaviour.Instantiate(Resources.Load<GameObject>("Player"));
         GameObject salve = 
