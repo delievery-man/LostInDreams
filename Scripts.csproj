@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\EnemyBulletMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RandomGenerationAlgs.cs" />
+     <Compile Include="Assets\Scripts\enemyShooting.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />
      <Compile Include="Assets\Scripts\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\KeySpawner.cs" />
@@ -69,10 +70,6 @@
      <Compile Include="Assets\Scripts\TileMapVisualizer.cs" />
      <Compile Include="Assets\Scripts\BossShooting.cs" />
      <Compile Include="Assets\Scripts\Door.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\VolumeValue.cs" />
-=======
->>>>>>> 202853a88260d2f4f65e09a45df0789b53b99483
      <Compile Include="Assets\Scripts\AudioMixerManager.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\SpawnFromInventory.cs" />
@@ -84,15 +81,11 @@
      <Compile Include="Assets\Scripts\BSPGenerator.cs" />
      <Compile Include="Assets\Scripts\MapSettings.cs" />
      <Compile Include="Assets\Scripts\Boss.cs" />
+     <Compile Include="Assets\Scripts\GhostsBullets.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerSound.cs" />
      <Compile Include="Assets\Scripts\shotTimer.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
-<<<<<<< HEAD
-     <Compile Include="Assets\Scripts\GhostsBullets.cs" />
-     <Compile Include="Assets\Scripts\enemyShooting.cs" />
-=======
->>>>>>> 202853a88260d2f4f65e09a45df0789b53b99483
      <None Include="Assets\Scripts\Scripts.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -323,7 +316,7 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="ICSharpCode.NRefactory">
- <HintPath>C:/Users/Даша/UnityProjects/LostInDreams-final/LostInDreams/Library/PackageCache/com.unity.render-pipelines.core@10.4.0/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+ <HintPath>C:/Users/Даша/UnityProjects/LostInDreams/LostInDreams/Library/PackageCache/com.unity.render-pipelines.core@10.4.0/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -671,10 +664,10 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.3f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/Даша/UnityProjects/LostInDreams-final/LostInDreams/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/Даша/UnityProjects/LostInDreams/LostInDreams/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/Даша/UnityProjects/LostInDreams-final/LostInDreams/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/Даша/UnityProjects/LostInDreams/LostInDreams/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
