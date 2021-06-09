@@ -107,8 +107,6 @@ public class BSPGenerator: MonoBehaviour
         
         if (spawnCenter != Vector3.zero && enemyCounters[spawnCenter][0] == 0  && new Vector3(playerPos.x, playerPos.y, 0f)!=spawnCenter)
         {
-            
-            
             if (enemyCounters[spawnCenter][1]<3)
             {
                 if (enemyCounters[spawnCenter][1] == 0)
@@ -134,8 +132,12 @@ public class BSPGenerator: MonoBehaviour
                     // if (Vector2.Distance(enemyPos, player.position) <=
                     //     Min(minRoomHeight, minRoomWidth) / 3)
                     //     continue;
+<<<<<<< HEAD
                     Instantiate(enemies[Random.Range(0, 2)],enemyPos , Quaternion.identity );
 
+=======
+                    Instantiate(enemy,enemyPos , Quaternion.identity );
+>>>>>>> 202853a88260d2f4f65e09a45df0789b53b99483
                     enemyCounters[spawnCenter][0]++;
                     currRoom = spawnCenter;
                 }

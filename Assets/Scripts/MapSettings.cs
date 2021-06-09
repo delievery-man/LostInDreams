@@ -40,8 +40,7 @@ public class MapSettings_Editor : Editor
 		EditorGUILayout.LabelField(mapLayer.name, EditorStyles.boldLabel);
 
 		mapLayer.algorithm = (Algorithm)EditorGUILayout.EnumPopup(new GUIContent("Generation Method", "The generation method we want to use to generate the map"), mapLayer.algorithm);
-
-        //Shows different options depending on what algorithm is selected
+		
         switch (mapLayer.algorithm)
         {
             case Algorithm.RandomWalk:

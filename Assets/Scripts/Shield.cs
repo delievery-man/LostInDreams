@@ -5,20 +5,20 @@ using UnityEngine.UI;
 public class Shield : MonoBehaviour
 {
     public float cd;
-
     public bool isCd;
     public bool isTest;
-
     private Image shieldImage;
-    
-
     private PlayerMovement player;
+<<<<<<< HEAD
     // Start is called before the first frame update
     private void Awake()
     {
         shieldImage = GetComponent<Image>();
     }
 
+=======
+   
+>>>>>>> 202853a88260d2f4f65e09a45df0789b53b99483
     void Start()
     {
         if (!isTest)
@@ -28,7 +28,6 @@ public class Shield : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isCd && !isTest)

@@ -8,9 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseGameMenu;
     public AudioMixerSnapshot Paused;
     public AudioMixerSnapshot Unpaused;
-
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,7 +40,6 @@ public class PauseMenu : MonoBehaviour
         PauseGame = true;
         Paused.TransitionTo(.01f);
         Shooting.StopShooting();
-
     }
 
     public void GoToMainMenu()
@@ -59,5 +56,4 @@ public class PauseMenu : MonoBehaviour
         var curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(curScene);
     }
-    
 }

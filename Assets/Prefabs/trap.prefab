@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1396b34af81cfa144989bebc77dc79a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullePrefab: {fileID: 8598697725076258024, guid: de57b5b4ceea7d149a5dde929e5a645d, type: 3}
+  bulletPrefab: {fileID: 8598697725076258024, guid: de57b5b4ceea7d149a5dde929e5a645d, type: 3}
 --- !u!212 &7011683713191770481
 SpriteRenderer:
   m_ObjectHideFlags: 0

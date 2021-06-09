@@ -3,13 +3,8 @@ using UnityEngine;
 public class shotTimer : MonoBehaviour
 {
     public TextMesh myText;
-
     public int timeLeft;
-
     private float gameTime;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
     private float nextActionTime = 0.0f;
     public bool isCd;
     public float period = 0.1f;
@@ -34,7 +29,6 @@ public class shotTimer : MonoBehaviour
 
             }
         }
-       
     }
 
     public void ResetTimer()

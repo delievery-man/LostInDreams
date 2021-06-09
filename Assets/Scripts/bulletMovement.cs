@@ -8,18 +8,18 @@ public class bulletMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy")  || other.CompareTag("Wall"))
+        {
+            if (other.GetComponent<Enemy>() != null && !triggered)
             {
-                if (other.GetComponent<Enemy>() != null && !triggered)
-                {
-                    triggered = true;
-                    other.GetComponent<Enemy>().DealDamage(damage);
-                }
-                else if (other.GetComponent<Boss>() != null)
-                {
-                    other.GetComponent<Boss>().DealDamage(damage);
-                }
-                Destroy(gameObject);
-
+                triggered = true;
+                other.GetComponent<Enemy>().DealDamage(damage);
             }
+            else if (other.GetComponent<Boss>() != null)
+            {
+                other.GetComponent<Boss>().DealDamage(damage);
+            }
+            Destroy(gameObject);
+
+        }
     }
 }
