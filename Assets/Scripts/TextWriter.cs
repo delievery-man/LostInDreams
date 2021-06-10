@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class TextWriter : MonoBehaviour
     private int charIndex;
     private float timePerChar;
     private float timer;
-
+    
     public void AddWriter(Text uiText, string textToWrite, float timePerChar)
     {
         this.uiText = uiText;
@@ -18,8 +19,13 @@ public class TextWriter : MonoBehaviour
         this.timePerChar = timePerChar;
         charIndex = 0;
     }
-    
-    void Update()
+
+    public void StopWriter()
+    {
+        charIndex = textToWrite.Length;
+    }
+
+    public void Update()
     {
         if (!(uiText is null))
         {
@@ -36,4 +42,5 @@ public class TextWriter : MonoBehaviour
             }
         }
     }
+
 }
