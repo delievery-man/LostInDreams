@@ -889,7 +889,9 @@ MonoBehaviour:
   dungeonWidth: 100
   dungeonHeight: 100
   offset: 3
-  enemy: {fileID: 6917871955561008073, guid: 63642c10953c8dc48b959c03d6eea774, type: 3}
+  enemies:
+  - {fileID: 6917871955561008073, guid: 63642c10953c8dc48b959c03d6eea774, type: 3}
+  - {fileID: 6917871955561008073, guid: 70c80b6204ca51b4290be3a9615ba94e, type: 3}
   boss: {fileID: 6917871955561008073, guid: afd8a04bcae57c545a7fb23bc9e89cc6, type: 3}
   roomCenters: []
   totalEnemyCount: 0
@@ -54939,8 +54941,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8598697725076258024, guid: 78098e034c6222146ac83ed5229a6d7b, type: 3}
-  minDamage: 0
-  maxDamage: 0
   bulletForce: 10
   shotPoint: {fileID: 3909964877765295878}
   weapon: 0
@@ -55045,9 +55045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   rb: {fileID: 3909964877619735189}
-  keyFollowPoint: {fileID: 0}
-  isPicked: 0
-  isFinished: 0
   isTested: 0
   inventory: {fileID: 0}
   keyImage: {fileID: 3745746205365655244, guid: 39f2d44390f59b24aa0a1681b9cdeff8, type: 3}
